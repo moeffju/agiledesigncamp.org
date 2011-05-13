@@ -1,0 +1,10 @@
+<div class="u">
+  <div class="a">
+    <%= link_to image_tag(user.image, :alt => user.name), user.url %>
+  </div>
+  <div class="nc">
+    <%= link_to user.name, user.url %>
+    <span><%= user.comment %></span>
+    <small><%= user.updated_at %></small>
+  </div>
+</div>
