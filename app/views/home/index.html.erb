@@ -48,7 +48,7 @@
 <div id="participants">
   <h2>Wer kommt noch?</h2>
   <div class="ptc" id="yes">
-    <h3>Auf jeden Fall</h3>
+    <h3>Auf jeden Fall<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %></h3>
     <ul>
       <%- @users[:yes].each do |user| %>
       <li><%= render :partial => 'user', :locals => { :user => user } %></li>
@@ -56,7 +56,7 @@
     </ul>
   </div>
   <div class="ptc" id="maybe">
-    <h3>Vielleicht</h3>
+    <h3>Vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %></h3>
     <ul>
       <%- @users[:maybe].each do |user| %>
       <li><%= render :partial => 'user', :locals => { :user => user } %></li>
