@@ -38,6 +38,7 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
 #header {
   @include column(16);
   h1 {
+    font-weight: bold;
     @include column(12);
   }
 }

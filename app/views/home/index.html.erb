@@ -18,8 +18,8 @@
 <div id="rsvp">
   <h2>Klingt das gut? Machst Du mit?</h2>
   <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
-  <%= f.submit 'Ja', :id => 'by' %> <%= f.submit 'Nein', :id => 'bn' %> <%= f.submit 'Vielleicht', :id => 'bm' %>
   <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+  <%= f.submit 'Ja', :id => 'by' %> <%= f.submit 'Nein', :id => 'bn' %> <%= f.submit 'Vielleicht', :id => 'bm' %>
   <%- end %>
 </div>
 
