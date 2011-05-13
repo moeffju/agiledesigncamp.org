@@ -180,3 +180,20 @@ address {
     @include last;
   }
 }
+ul.h {
+  @include horizontal-list;
+}
+.home-credits ul.h {
+  li {
+    width: 120px;
+    text-align: center;
+  }
+}
+em {
+  font-style: normal;
+  font-weight: bold;
+  @include single-text-shadow(#ccc, 1px, 1px, 5px);
+  span {
+    color: #0096ff;
+  }
+}
