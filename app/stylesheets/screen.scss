@@ -12,8 +12,12 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
 @include blueprint-typography;
 @include blueprint-interaction;
 
+body {
+  background: #eee url(/images/bg.png) repeat-y 50% 0;
+}
 #container {
   @include container;
+  padding: 0 10px;
 }
 #flash {
   position: absolute;
@@ -34,15 +38,25 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
   width: 286px;
   padding: 1em;
   background: #eee;
+  margin-top: 8px;
+  .u {
+    margin-top: 8px;
+  }
 }
 #header {
   @include column(16);
   h1 {
-    font-weight: bold;
     @include column(12);
+    margin-top: 0;
+    font-weight: bold;
     a {
+      display: block;
       text-decoration: none;
       color: black;
+      @include hide-text;
+      background: url(/images/logo.png) no-repeat 0 0;
+      width: 255px;
+      height: 91px;
       &:hover {
         text-decoration: underline;
       }
@@ -102,15 +116,18 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
   }
   #by { font-weight: bold; }
   &.status-none {
-    
+    @include single-box-shadow(#aaa, 0, 0, 15px, 0, true);
   }
   &.status-0 {
+    @include single-box-shadow(#faa, 0, 0, 15px, 0, true);
     background: #fee;
   }
   &.status-1 {
+    @include single-box-shadow(#afa, 0, 0, 15px, 0, true);
     background: #efe;
   }
   &.status-2 {
+    @include single-box-shadow(#aaf, 0, 0, 15px, 0, true);
     background: #eef;
   }
 }
@@ -128,7 +145,7 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
   @include column(24);
   @include last;
   margin-top: 3em;
-  border-top: 1px solid #888;
+  border-top: 1px solid #bbb;
   font-size: 90%;
   color: #888;
   a {
