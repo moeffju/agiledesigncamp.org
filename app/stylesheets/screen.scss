@@ -101,6 +101,18 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
     margin-top: 0;
   }
   #by { font-weight: bold; }
+  &.status-none {
+    
+  }
+  &.status-0 {
+    background: #fee;
+  }
+  &.status-1 {
+    background: #efe;
+  }
+  &.status-2 {
+    background: #eef;
+  }
 }
 #participants {
   @include column(24);

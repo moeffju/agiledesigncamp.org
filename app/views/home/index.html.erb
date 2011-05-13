@@ -15,7 +15,7 @@
   <p>In der <a href="http://www.kopiba.de/">kopiba</a>, <a href="http://maps.google.com/?q=Beim+Gr%C3%BCnen+J%C3%A4ger+24%2C+20359+Hamburg">Beim Grünen Jäger 24, 20359 Hamburg</a>. Haltestelle "Neuer Pferdemarkt" (Bus 3) bzw. "Feldstraße" (U3).</p>
 </div>
 
-<div id="rsvp">
+<div id="rsvp" class="<%- if current_user %>status-<%= current_user.status %><% else %>status-none<% end %>">
   <%- if current_user %>
     <%- if current_user.status == 1 %>
       <h2>Das klingt gut! Ich bin dabei!</h2>
