@@ -140,4 +140,11 @@ address {
     margin-left: 0;
     padding-left: 0;
   }
+  .privacy {
+    @include column(12);
+  }
+  .imprint {
+    @include column(12);
+    @include last;
+  }
 }
