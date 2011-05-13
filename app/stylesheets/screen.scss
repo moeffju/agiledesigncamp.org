@@ -1,0 +1,106 @@
+$blueprint-grid-columns: 24;
+$blueprint-grid-width: 30px;
+$blueprint-grid-margin: 10px;
+$line-height: 18px;
+$width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margin) - $blueprint-grid-margin;
+
+@import "compass";
+@import "compass/layout";
+@import "blueprint";
+@import "blueprint/interaction";
+
+@include blueprint-typography;
+@include blueprint-interaction;
+
+#container {
+  @include container;
+}
+#flash {
+  position: absolute;
+  top: 0;
+  width: $width;
+  p {
+    margin: 0;
+    padding: 8px;
+  }
+  .notice {
+  }
+  .alert {
+  }
+}
+#nav {
+  @include column(8);
+  @include last;
+  width: 286px;
+  padding: 1em;
+  background: #eee;
+}
+#header {
+  @include column(16);
+  h1 {
+    @include column(12);
+  }
+}
+#content {
+  @include column(24);
+  @include last;
+}
+.ptc {
+  h3 { margin-top: 0; }
+  ul, li { list-style: none; padding: 0; margin: 0; }
+  li {
+    @include clearfix;
+  }
+}
+.u {
+  .a {
+    display: block;
+    float: left;
+    margin: 0px 8px 8px 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .nc {
+    padding-top: 2px;
+    span {
+      display: block;
+      font-size: 90%;
+      color: #888;
+      height: 16px;
+      overflow: hidden;
+    }
+    small {
+      display: block;
+      font-size: 50%;
+    }
+  }
+}
+#was, #wann, #wo {
+  @include column(8);
+}
+#wo {
+  @include last;
+}
+#rsvp {
+  @include column(14);
+  @include last;
+  background: #eee;
+  padding: 2em ($blueprint-grid-width + $blueprint-grid-margin);
+  text-align: center;
+  h2 {
+    margin-top: 0;
+  }
+  #by { font-weight: bold; }
+}
+#participants {
+  @include column(24);
+  @include last;
+}
+#yes, #maybe {
+  @include column(12);
+}
+#maybe {
+  @include last;
+}
