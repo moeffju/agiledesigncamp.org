@@ -13,19 +13,23 @@ class HomeController < ApplicationController
       return
     end
     current_user.comment = params[:user][:comment]
-    case params[:commit]
-    when /yes|ja/i
+    if params[:yes]
       current_user.status = 1
       flash[:success] = 'Du bist dabei!'
-    when /no|nein/i
+    elsif params[:no]
       current_user.status = 0
       flash[:notice] = 'Wir werden Dich vermissen. :('
-    when /maybe|vielleicht/i
+    elsif params[:maybe]
       current_user.status = 2
       flash[:notice] = 'Bitte gib uns schnellstmöglich Bescheid, damit wir planen können!'
+    else
+      redirect_to '/' and return
     end
     current_user.save
     redirect_to '/'
   end
-
+  
+  def impressum; end
+  def sponsoring; end
+  def credits; end
 end

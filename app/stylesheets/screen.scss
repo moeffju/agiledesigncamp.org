@@ -40,6 +40,10 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
   h1 {
     font-weight: bold;
     @include column(12);
+    a {
+      text-decoration: none;
+      color: black;
+    }
   }
 }
 #content {
@@ -104,4 +108,36 @@ $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margi
 }
 #maybe {
   @include last;
+}
+#footer {
+  @include column(24);
+  @include last;
+  margin-top: 3em;
+  border-top: 1px solid #888;
+  font-size: 90%;
+  color: #888;
+  a {
+    color: #444;
+    text-decoration: none;
+  }
+  p {
+    float: left;
+  }
+  p.links {
+    float: none;
+    text-align: right;
+  }
+}
+address {
+  font-style: normal;
+  span {
+    font-weight: bold;
+  }
+}
+.home-impressum {
+  ul, li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
 }

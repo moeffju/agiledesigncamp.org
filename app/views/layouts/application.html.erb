@@ -14,6 +14,7 @@
     _gaq.push(['_setAccount', 'UA-75436-9']);
     _gaq.push(['_trackPageview']);
     _gaq.push(['_trackPageLoadTime']);
+    _gaq.push(['_gat._anonymizeIp']);
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -24,7 +25,7 @@
   </script>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body class="<%= [params[:controller], params[:action]] * '-' %>">
 
 <div id="container">
   
@@ -38,7 +39,7 @@
 <% end %>
 
 <div id="header">
-  <h1>Hamburg++</h1>
+  <h1><%= link_to 'Hamburg++', '/' %></h1>
 </div>
 
 <div id="nav">
@@ -59,6 +60,15 @@
 
 <div id="content">
 <%= yield %>
+</div>
+
+<div id="footer">
+  <p>Coded in ~2.5h by <a href="http://moeffju.net/">Matthias Bauer</p>
+  <p class="links">
+    <%= link_to 'Sponsoring', '/sponsoring' %> | 
+    <%= link_to 'Credits', '/credits' %> | 
+    <%= link_to 'Impressum', '/impressum' %>
+  </p>
 </div>
 
 </div>
