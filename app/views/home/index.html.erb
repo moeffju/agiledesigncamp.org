@@ -16,11 +16,33 @@
 </div>
 
 <div id="rsvp">
-  <h2>Klingt das gut? Machst Du mit?</h2>
-  <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
-  <%= f.text_field :comment, :placeholder => 'Kommentar' %>
-  <%= f.submit 'Ja', :id => 'by' %> <%= f.submit 'Nein', :id => 'bn' %> <%= f.submit 'Vielleicht', :id => 'bm' %>
-  <%- end %>
+  <%- if current_user %>
+    <%- if current_user.status == 1 %>
+      <h2>Das klingt gut! Ich bin dabei!</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Leider doch nicht :(', :name => 'no', :id => 'bn' %> <%= f.submit 'Aber nur vielleicht', :name => 'maybe', :id => 'bm' %>
+      <% end %>
+    <% elsif current_user.status == 2 %>
+      <h2>Ich weiß noch nicht, ob ich das schaffe.</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Ja, ich kann!', :name => 'yes', :id => 'by' %> <%= f.submit 'Leider nicht.', :name => 'no', :id => 'bn' %>
+      <% end %>
+    <% else %>
+      <h2>Ich schaff's leider nicht :(</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Doch, ich schaffe es!', :name => 'yes', :id => 'by' %> <%= f.submit 'Vielleicht doch!', :name => 'maybe', :id => 'bm' %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h2>Klingt das gut? Machst Du mit?</h2>
+    <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+    <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+    <%= f.submit 'Ja', :name => 'yes', :id => 'by' %> <%= f.submit 'Nein', :name => 'no', :id => 'bn' %> <%= f.submit 'Vielleicht', :name => 'maybe', :id => 'bm' %>
+    <% end %>
+  <% end %>
 </div>
 
 <div id="participants">
