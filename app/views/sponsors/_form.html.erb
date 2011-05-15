@@ -1,4 +1,4 @@
-<%= form_for(@sponsor) do |f| %>
+<%= form_for @sponsor, :html => {:multipart => true} do |f| %>
   <% if @sponsor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
@@ -17,11 +17,13 @@
   </div>
   <div class="field">
     <%= f.label :image %><br />
-    <%= f.text_field :image %>
+    <%= image_tag(@sponsor.image_url) if @sponsor.image? %> <%= f.check_box :remove_image %> Löschen?<br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
-    <%= f.text_area :url %>
+    <%= f.text_field :url %>
   </div>
   <div class="actions">
     <%= f.submit %>

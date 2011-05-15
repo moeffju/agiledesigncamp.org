@@ -4,6 +4,7 @@ gem 'rails', '~> 3.0.7'
 gem 'sqlite3'
 
 gem 'omniauth', '0.2.0'
+gem 'carrierwave'
 
 gem 'jquery-rails'
 gem 'compass', '>= 0.11.1'

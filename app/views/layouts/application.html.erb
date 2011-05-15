@@ -7,6 +7,7 @@
   <!--[if IE]>
       <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
+  <% if is_admin? %><%= javascript_include_tag :all %><% end %>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
