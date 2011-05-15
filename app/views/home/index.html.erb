@@ -64,3 +64,12 @@
     </li>
   </div>
 </div>
+
+<div id="sponsors">
+  <h2>Unterstützer<small> (<%= link_to 'Info für Sponsoren', '/sponsoring' %>)</small></h2>
+  <ul>
+    <% @sponsors.each do |sponsor| %>
+    <li><%= link_to image_tag(sponsor.image), sponsor.url, :alt => sponsor.name, :title => sponsor.name %></li>
+    <% end %>
+  </ul>
+</div>

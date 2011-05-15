@@ -4,9 +4,14 @@ Plusplus::Application.routes.draw do
   get "/impressum" => 'home#impressum'
   get "/sponsoring" => 'home#sponsoring'
   get "/credits" => 'home#credits'
+  get "/admin" => 'home#admin'
   
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "home#index"
   get '/signin' => "sessions#signin"
   get "/signout" => "sessions#destroy", :as => :signout
+  
+  scope '/admin' do
+    resources :sponsors
+  end
 end

@@ -133,13 +133,16 @@ body {
   }
 }
 #participants {
-  @include column(24);
-  @include last;
+  @include column(16);
 }
 #yes, #maybe {
-  @include column(12);
+  @include column(8);
 }
 #maybe {
+  @include last;
+}
+#sponsors {
+  @include column(8);
   @include last;
 }
 #footer {
@@ -196,5 +199,15 @@ em {
   @include single-text-shadow(#ccc, 1px, 1px, 5px);
   span {
     color: #0096ff;
+  }
+}
+h2 small {
+  font-size: 14px;
+}
+#sponsors {
+  ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }

@@ -48,7 +48,7 @@
       <%= image_tag(current_user.image, :alt => current_user.name) %>
     </div>
     <div class="nc">
-      <%= current_user.name %>
+      <%= current_user.name %><%- if is_admin? %> (<%= link_to 'Admin', '/admin' %>)<% end %>
       <br><%= link_to "Abmelden", signout_path %>
     </div>
   </div>

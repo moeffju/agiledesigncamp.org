@@ -5,6 +5,7 @@ class HomeController < ApplicationController
       :yes => User.yes,
       :maybe => User.maybe
     }
+    @sponsors = Sponsor.all
   end
 
   def rsvp
@@ -32,4 +33,8 @@ class HomeController < ApplicationController
   def impressum; end
   def sponsoring; end
   def credits; end
+  
+  def admin
+    raise ActionController::RoutingError.new('Not Found') unless is_admin?
+  end
 end
