@@ -35,6 +35,6 @@ class HomeController < ApplicationController
   def credits; end
   
   def admin
-    raise ActionController::RoutingError.new('Not Found') unless is_admin?
+    ensure_admin
   end
 end

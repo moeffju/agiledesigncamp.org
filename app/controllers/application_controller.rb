@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user, :is_admin?
+  
+  def ensure_admin
+    raise ActionController::RoutingError.new('Not Found') unless is_admin?
+  end
 
   private
 
