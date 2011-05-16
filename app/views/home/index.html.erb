@@ -67,6 +67,7 @@
 
 <div id="sponsors">
   <h2>Unterstützer<small> (<%= link_to 'Info für Sponsoren', '/sponsoring' %>)</small></h2>
+  <p>Vielen Dank an:</p>
   <ul>
     <% @sponsors.each do |sponsor| %>
     <li><%= link_to image_tag(sponsor.image.url), sponsor.url, :alt => sponsor.name, :title => sponsor.name %></li>
