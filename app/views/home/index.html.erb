@@ -7,7 +7,7 @@
 
 <div id="wann">
   <h2>Wann?</h2>
-  <p>Am <strong>17. Mai 2011</strong>, <strong>ab 10 Uhr, bis so 22 Uhr</strong>.<br>Ihr könnt jederzeit reinschauen, nach der Arbeit, während der Arbeit, vormittags, nachmittags, whenever.</p>
+  <p>Am <strong>17. Mai 2011</strong>, <strong>ab 10 Uhr, bis mindestens 22 Uhr</strong>.<br>Ihr könnt jederzeit reinschauen, nach der Arbeit, während der Arbeit, vormittags, nachmittags, whenever.</p>
 </div>
 
 <div id="wo">
@@ -70,7 +70,13 @@
   <p>Vielen Dank an:</p>
   <ul>
     <% @sponsors.each do |sponsor| %>
-    <li><%= link_to image_tag(sponsor.image.url), sponsor.url, :alt => sponsor.name, :title => sponsor.name %></li>
+    <li>
+    <% if sponsor.image.present? %>
+      <%= link_to image_tag(sponsor.image.url), sponsor.url, :alt => sponsor.name, :title => sponsor.name %>
+    <% else %>
+      <big><%= link_to sponsor.name, sponsor.url, :title => sponsor.name %></big>
+    <% end %>
+    </li>
     <% end %>
   </ul>
 </div>

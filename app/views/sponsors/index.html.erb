@@ -1,27 +1,21 @@
 <h1>Listing sponsors</h1>
 
+<p><%= link_to 'New Sponsor', new_sponsor_path %></p>
+
 <table>
   <tr>
-    <th>Name</th>
+    <th>Name / URL</th>
     <th>Image</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
+    <th>Amount</th>
     <th></th>
   </tr>
 
 <% @sponsors.each do |sponsor| %>
   <tr>
-    <td><%= sponsor.name %></td>
-    <td><%= sponsor.image %></td>
-    <td><%= sponsor.url %></td>
-    <td><%= link_to 'Show', sponsor %></td>
-    <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
-    <td><%= link_to 'Destroy', sponsor, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= sponsor.name %><br><%= link_to sponsor.url, sponsor.url %></td>
+    <td><% if sponsor.image.present? %><%= image_tag sponsor.image.url %><% else %>–<% end %></td>
+    <td><big><%= sponsor.amount %>€</big></td>
+    <td class="actions"><%= link_to 'Show', sponsor %> | <%= link_to 'Edit', edit_sponsor_path(sponsor) %> | <%= link_to 'Destroy', sponsor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Sponsor', new_sponsor_path %>

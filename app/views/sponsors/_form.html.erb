@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
     <%= f.label :image %><br />
     <%= image_tag(@sponsor.image_url) if @sponsor.image? %> <%= f.check_box :remove_image %> Löschen?<br>
     <%= f.file_field :image %>

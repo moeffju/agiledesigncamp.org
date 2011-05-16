@@ -215,3 +215,20 @@ h2 small {
     padding: 0;
   }
 }
+th {
+  text-align: left;
+  border-bottom: 1px solid black;
+  background: #eee;
+}
+td.actions {
+  white-space: nowrap;
+  a {
+    font-weight: bold;
+  }
+}
+.sponsors-index table big {
+  font-size: 2em;
+}
+#sponsors big {
+  font-size: 2em;
+}
