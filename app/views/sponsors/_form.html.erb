@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :image %><br />
-    <%- if if @sponsor.image? %><%= image_tag(@sponsor.image_url) %> <%= f.check_box :remove_image %> Löschen?<br><% end %>
+    <%- if @sponsor.image? %><%= image_tag(@sponsor.image_url) %> <%= f.check_box :remove_image %> Löschen?<br><% end %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
