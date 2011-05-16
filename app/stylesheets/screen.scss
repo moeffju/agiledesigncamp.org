@@ -229,6 +229,11 @@ td.actions {
 .sponsors-index table big {
   font-size: 2em;
 }
-#sponsors big {
-  font-size: 2em;
+#sponsors {
+  li {
+    margin-bottom: 16px;
+  }
+  big {
+    font-size: 2em;
+  }
 }
