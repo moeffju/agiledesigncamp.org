@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
   
   def is_admin?
-    current_user && %w(5618832).include? current_user.uid
+    current_user && %w(5618832).include?(current_user.uid)
   end
 end
