@@ -65,6 +65,43 @@
   </div>
 </div>
 
+<div id="twitter">
+  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+  <script>
+  new TWTR.Widget({
+    version: 2,
+    type: 'search',
+    search: '#HHPP OR HH_PlusPlus',
+    interval: 6000,
+    title: 'Eine Art Barcamp',
+    subject: 'Hamburg++',
+    width: 300,
+    height: 300,
+    theme: {
+      shell: {
+        background: '#8ec1da',
+        color: '#ffffff'
+      },
+      tweets: {
+        background: '#ffffff',
+        color: '#444444',
+        links: '#1985b5'
+      }
+    },
+    features: {
+      scrollbar: true,
+      loop: true,
+      live: true,
+      hashtags: true,
+      timestamp: true,
+      avatars: true,
+      toptweets: false,
+      behavior: 'default'
+    }
+  }).render().start();
+  </script>
+</div>
+
 <div id="sponsors">
   <h2>Unterstützer<small> (<%= link_to 'Info für Sponsoren', '/sponsoring' %>)</small></h2>
   <p>Vielen Dank an:</p>

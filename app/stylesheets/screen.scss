@@ -137,13 +137,16 @@ body {
   }
 }
 #participants {
-  @include column(16);
+  clear: both;
+  @include column(8);
 }
 #yes, #maybe {
   @include column(8);
 }
 #maybe {
-  @include last;
+}
+#twitter {
+  @include column(8);  
 }
 #sponsors {
   @include column(8);
