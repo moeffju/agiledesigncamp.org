@@ -16,9 +16,9 @@ class UsersController < ApplicationController
 
   def check
     @user = User.find(params[:id])
+    User.record_timestamps = false
     @user.arrived = true
     @user.arrived_at = Time.now
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to(users_url, :notice => 'User was successfully updated.') }
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+    User.record_timestamps = true
   end
 
 end
