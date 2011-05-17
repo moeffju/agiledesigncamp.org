@@ -19,7 +19,7 @@
 <div id="no">
 <h3>Nein</h3>
 <ul>
-  <%- @users[:maybe].each do |user| %>
+  <%- @users[:no].each do |user| %>
   <li><%= render :partial => 'user', :locals => { :user => user } %></li>
   <%- end %>
 </li>
