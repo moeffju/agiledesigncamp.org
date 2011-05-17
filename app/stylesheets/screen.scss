@@ -4,6 +4,8 @@ $blueprint-grid-margin: 10px;
 $line-height: 18px;
 $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margin) - $blueprint-grid-margin;
 
+$blue: #0096ff;
+
 @import "compass";
 @import "compass/layout";
 @import "blueprint";
@@ -102,6 +104,11 @@ body {
       font-size: 50%;
       color: #aaa;
     }
+  }
+  b {
+    font-weight: bold;
+    color: $blue;
+    @include single-text-shadow(#aaa, 1px, 1px, 2px);
   }
 }
 #was, #wann, #wo {
@@ -211,7 +218,7 @@ em {
   font-weight: bold;
   @include single-text-shadow(#ccc, 1px, 1px, 5px);
   span {
-    color: #0096ff;
+    color: $blue;
   }
 }
 h2 small {

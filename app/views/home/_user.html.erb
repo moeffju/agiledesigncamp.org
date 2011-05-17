@@ -3,7 +3,7 @@
     <%= link_to image_tag(user.image, :alt => user.name), user.url %>
   </div>
   <div class="nc">
-    <%= link_to user.name, user.url %>
+    <%= link_to user.name, user.url %><%- if user.arrived %> <b>✓</b><% end %>
     <span><%= user.comment %></span>
     <small><%= user.updated_at %></small>
   </div>
