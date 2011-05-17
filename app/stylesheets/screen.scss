@@ -258,5 +258,11 @@ td.actions {
   }
   .u {
     clear: both;
+    .c {
+      font-size: 2em;
+      small a {
+        font-size: 12px;
+      }
+    }
   }
 }

@@ -14,14 +14,31 @@ class UsersController < ApplicationController
     end
   end
 
-  def check
+  def check_in
     @user = User.find(params[:id])
     User.record_timestamps = false
     @user.arrived = true
     @user.arrived_at = Time.now
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(users_url, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(users_url, :notice => 'User checked in!') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+    User.record_timestamps = true
+  end
+
+  def check_out
+    @user = User.find(params[:id])
+    User.record_timestamps = false
+    @user.arrived = false
+    @user.arrived_at = Time.now
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(users_url, :notice => 'User checked out!') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

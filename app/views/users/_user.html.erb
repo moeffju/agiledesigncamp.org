@@ -7,9 +7,9 @@
   </div>
   <div class="c">
     <% if user.arrived? %>
-      Arrived!
+      ✓ Arrived <small><%= link_to 'Doch nicht?', users_check_out_path(user) %></small>
     <% else %>
-      <%= link_to 'Arrived', users_check_path(user) %>
+      <%= link_to '✓ Check in', users_check_in_path(user) %>
     <% end %>
   </div>
 </div>
