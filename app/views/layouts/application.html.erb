@@ -3,11 +3,7 @@
 <head>
   <title><%- if @title %><%= @title %> – <% end %>Hamburg++ 2011</title>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
-  <!--[if IE]>
-      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <![endif]-->
-  <% if is_admin? %><%= javascript_include_tag :all %><% end %>
+  <%= javascript_include_tag 'jquery.min', 'rails', 'application' %>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -20,9 +16,9 @@
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
+    })();    
   </script>
+  <%= content_for :javascripts %>
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= [params[:controller], params[:action]] * '-' %>">

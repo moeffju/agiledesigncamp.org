@@ -139,6 +139,12 @@ body {
 #participants {
   clear: both;
   @include column(8);
+  h3 {
+    a {
+      font-size: 14px;
+      padding-left: 16px;
+    }
+  }
 }
 #yes, #maybe {
   @include column(8);

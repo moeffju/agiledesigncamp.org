@@ -1,3 +1,22 @@
+<% content_for :javascripts do %>
+<script type="text/javascript">
+  $(function(){
+    $('#maybe').hide();
+    $('#maybe h3 a').click(function(){
+      $('#maybe').hide();
+      $('#yes').show();
+      e.preventDefault();
+      return false;
+    });
+    $('#yes h3 a').click(function(e){
+      $('#yes').hide();
+      $('#maybe').show();
+      e.preventDefault();
+      return false;
+    });
+  });
+</script>
+<% end %>
 <div id="was">
   <h2>Worum geht's?</h2>
   <p>Wir machen eine Alternativveranstaltung zur next 11, in Hamburg. Wir nennen sie "<em>Hamburg<span>++</span></em>".</p>
@@ -48,7 +67,7 @@
 <div id="participants">
   <h2>Wer kommt noch?</h2>
   <div class="ptc" id="yes">
-    <h3>Auf jeden Fall<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %></h3>
+    <h3>Auf jeden Fall<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %> <a href="#maybe">Vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %></a></h3>
     <ul>
       <%- @users[:yes].each do |user| %>
       <li><%= render :partial => 'user', :locals => { :user => user } %></li>
@@ -56,7 +75,7 @@
     </ul>
   </div>
   <div class="ptc" id="maybe">
-    <h3>Vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %></h3>
+    <h3>Vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %> <a href="#yes">Auf jeden Fall<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %></a></h3>
     <ul>
       <%- @users[:maybe].each do |user| %>
       <li><%= render :partial => 'user', :locals => { :user => user } %></li>
