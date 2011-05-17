@@ -9,6 +9,9 @@ class HomeController < ApplicationController
   end
 
   def rsvp
+    redirect_to '/', :alert => 'Das Event ist vorbei!'
+    return
+
     unless current_user
       redirect_to '/signin', :alert => 'Bitte melde dich erst an!'
       return
