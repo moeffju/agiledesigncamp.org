@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110516100539) do
+ActiveRecord::Schema.define(:version => 20110517093945) do
 
   create_table "rsvps", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110516100539) do
     t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "arrived"
   end
 
 end

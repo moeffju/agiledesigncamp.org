@@ -13,5 +13,7 @@ Plusplus::Application.routes.draw do
   
   scope '/admin' do
     resources :sponsors
+    get '/users' => 'users#index', :as => :users
+    get '/users/check/:id' => 'users#check', :as => :users_check
   end
 end
