@@ -1,5 +1,5 @@
 <div id="yes">
-<h3>Ja</h3>
+<h3>Ja (<%= @users[:yes].select(&:arrived).count %> / <%= @users[:yes].size %>)</h3>
 <ul>
   <%- @users[:yes].each do |user| %>
   <li><%= render :partial => 'user', :locals => { :user => user } %></li>
@@ -8,7 +8,7 @@
 </div>
 
 <div id="maybe">
-<h3>Vielleicht</h3>
+<h3>Vielleicht (<%= @users[:maybe].select(&:arrived).count %> / <%= @users[:maybe].size %>)</h3>
 <ul>
   <%- @users[:maybe].each do |user| %>
   <li><%= render :partial => 'user', :locals => { :user => user } %></li>
@@ -17,7 +17,7 @@
 </div>
 
 <div id="no">
-<h3>Nein</h3>
+<h3>Nein (<%= @users[:no].select(&:arrived).count %> / <%= @users[:no].size %>)</h3>
 <ul>
   <%- @users[:no].each do |user| %>
   <li><%= render :partial => 'user', :locals => { :user => user } %></li>
