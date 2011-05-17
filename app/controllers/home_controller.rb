@@ -14,6 +14,7 @@ class HomeController < ApplicationController
       return
     end
     current_user.comment = params[:user][:comment]
+    current_user.signup_at = Time.now
     if params[:yes]
       current_user.status = 1
       flash[:success] = 'Du bist dabei!'

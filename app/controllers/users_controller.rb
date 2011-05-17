@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def check
     @user = User.find(params[:id])
     @user.arrived = true
+    @user.arrived_at = Time.now
 
     respond_to do |format|
       if @user.save
