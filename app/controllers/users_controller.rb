@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def index
     @users = {
+      :all => User.all,
       :yes => User.yes,
       :maybe => User.maybe,
       :no => User.no

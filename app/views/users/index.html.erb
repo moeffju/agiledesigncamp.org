@@ -1,3 +1,4 @@
+<h2><%= @users[:all].select(&:arrived).count %> / <%= @users[:all].count %> eingecheckt</h2>
 <div id="yes">
 <h3>Ja (<%= @users[:yes].select(&:arrived).count %> / <%= @users[:yes].size %>)</h3>
 <ul>
