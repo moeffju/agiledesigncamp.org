@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def check_in
     @user = User.find(params[:id])
     User.record_timestamps = false
+    @user.status = 1
     @user.arrived = true
     @user.arrived_at = Time.now
     respond_to do |format|
