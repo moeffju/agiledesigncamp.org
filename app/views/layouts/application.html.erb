@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%- if @title %><%= @title %> – <% end %>Hamburg++ 2011</title>
+  <title><%- if @title %><%= @title %> – <% end %>agile design camp</title>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <%= javascript_include_tag 'jquery.min', 'rails', 'application' %>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-75436-9']);
+    //_gaq.push(['_setAccount', 'UA-75436-9']);
     _gaq.push(['_trackPageview']);
     _gaq.push(['_trackPageLoadTime']);
     _gaq.push(['_gat._anonymizeIp']);
@@ -35,8 +35,7 @@
 <% end %>
 
 <div id="header">
-  <h1><%= link_to 'Hamburg++', '/' %></h1>
-  <p>Twitter: <%= link_to '@HH_PlusPlus', 'https://twitter.com/HH_PlusPlus' %> – Hashtag: <%= link_to '#hhpp', 'http://search.twitter.com/search?q=%23hhpp' %><br>Facebook: <%= link_to 'Hamburg++', 'https://www.facebook.com/hamburgplusplus' %></p>
+  <h1><%= link_to 'agile design camp', '/' %></h1>
 </div>
 
 <div id="nav">
@@ -60,7 +59,6 @@
 </div>
 
 <div id="footer">
-  <p>Coded in ~2.5h by <a href="http://moeffju.net/">Matthias Bauer</p>
   <p class="links">
     <%= link_to 'Sponsoring', '/sponsoring' %> | 
     <%= link_to 'Credits', '/credits' %> | 

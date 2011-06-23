@@ -4,7 +4,10 @@ $blueprint-grid-margin: 10px;
 $line-height: 18px;
 $width: $blueprint-grid-columns * ($blueprint-grid-width + $blueprint-grid-margin) - $blueprint-grid-margin;
 
-$blue: #0096ff;
+$darkblue: #072338;
+$blue: #99def7;
+$font-color: $blue;
+$link-color: $blue;
 
 @import "compass";
 @import "compass/layout";
@@ -15,7 +18,7 @@ $blue: #0096ff;
 @include blueprint-interaction;
 
 body {
-  background: #eee url(/images/bg.png) repeat-y 50% 0;
+  background: $darkblue;
 }
 #container {
   @include container;
@@ -39,34 +42,31 @@ body {
   @include last;
   width: 286px;
   padding: 1em;
-  background: #eee;
   margin-top: 8px;
   .u {
     margin-top: 8px;
   }
 }
 #header {
-  @include column(16);
+  @include column(24);
+  @include last;
   h1 {
-    width: 280px;
-    float: left;
-    margin-top: 0;
-    font-weight: bold;
+    width: 100%;
+    height: 240px;
+    margin: 0;
     a {
       display: block;
+      position: absolute;
+      margin-left: -72px;
       text-decoration: none;
-      color: black;
-      @include hide-text;
       background: url(/images/logo.png) no-repeat 0 0;
-      width: 255px;
-      height: 91px;
+      @include hide-text;
+      width: 100%;
+      height: 240px;
       &:hover {
         text-decoration: underline;
       }
     }
-  }
-  p {
-    margin-top: 46px;
   }
 }
 #content {
@@ -95,19 +95,16 @@ body {
     span {
       display: block;
       font-size: 90%;
-      color: #444;
       height: 16px;
       overflow: hidden;
     }
     small {
       display: block;
       font-size: 50%;
-      color: #aaa;
     }
   }
   b {
     font-weight: bold;
-    color: $blue;
     @include single-text-shadow(#aaa, 1px, 1px, 2px);
   }
 }
@@ -120,7 +117,6 @@ body {
 #rsvp {
   @include column(14);
   @include last;
-  background: #eee;
   padding: 2em ($blueprint-grid-width + $blueprint-grid-margin);
   text-align: center;
   h2 {
@@ -171,9 +167,7 @@ body {
   margin-top: 3em;
   border-top: 1px solid #bbb;
   font-size: 90%;
-  color: #888;
   a {
-    color: #444;
     text-decoration: none;
   }
   p {
@@ -218,7 +212,6 @@ em {
   font-weight: bold;
   @include single-text-shadow(#ccc, 1px, 1px, 5px);
   span {
-    color: $blue;
   }
 }
 h2 small {

@@ -18,88 +18,72 @@
 </script>
 <% end %>
 <div id="was">
-  <h2>Worum geht's?</h2>
-  <p>Wir machen eine Alternativveranstaltung zur next 11, in Hamburg. Wir nennen sie "<em>Hamburg<span>++</span></em>".</p>
-  <p>Das Format soll Barcamp-ähnlich sein. Kurze Sessions (10-20 Minuten), danach Pause, um die Session zu verarbeiten und zu schnacken und Kaffee zu trinken, dann weiter.</p>
-  <p>Erzählt uns, was euch begeistert, was euch bewegt, was ihr super findet oder was ihr ändern wollt, eure Startup-Idee, eure Madskillz, etc.</p>
+  <h2>worum geht es?</h2>
+  <p>Yada yada...</p>
 </div>
 
 <div id="wann">
-  <h2>Wann?</h2>
-  <p>Am <strong>17. Mai 2011</strong>, <strong>ab 10 Uhr, bis mindestens 22 Uhr</strong>.<br>Ihr könnt jederzeit reinschauen, nach der Arbeit, während der Arbeit, vormittags, nachmittags, whenever.</p>
+  <h2>wann?</h2>
+  <p><strong>22.–24. Juli 2011</strong></p>
 </div>
 
 <div id="wo">
-  <h2>Wo?</h2>
-  <p>In der <a href="http://www.kopiba.de/">kopiba</a>, <a href="http://maps.google.com/?q=Beim+Gr%C3%BCnen+J%C3%A4ger+24%2C+20359+Hamburg">Beim Grünen Jäger 24, 20359 Hamburg</a>. Haltestelle "Neuer Pferdemarkt" (Bus 3) bzw. "Feldstraße" (U3).</p>
+  <h2>wo?</h2>
+  <p>Location tbd.</p>
 </div>
 
 <div id="rsvp" class="<%- if current_user %>status-<%= current_user.status %><% else %>status-none<% end %>">
   <%- if current_user %>
-    <% if current_user.status == 1 && current_user.arrived %>
-      <h2>Du warst dabei! Danke!</h2>
-    <% elsif current_user.status == 1 && !current_user.arrived %>
-      <h2>Wir haben Dich vermisst!</h2>
+    <%- if current_user.status == 1 %>
+      <h2>Das klingt gut! Ich bin dabei!</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Leider doch nicht :(', :name => 'no', :id => 'bn' %> <%= f.submit 'Aber nur vielleicht', :name => 'maybe', :id => 'bm' %>
+      <% end %>
+    <% elsif current_user.status == 2 %>
+      <h2>Ich weiß noch nicht, ob ich das schaffe.</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Ja, ich kann!', :name => 'yes', :id => 'by' %> <%= f.submit 'Leider nicht.', :name => 'no', :id => 'bn' %>
+      <% end %>
     <% else %>
-      <h2>Schade, dass Du nicht dabei warst!</h2>
+      <h2>Ich schaff's leider nicht :(</h2>
+      <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+      <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+      <%= f.submit 'Doch, ich schaffe es!', :name => 'yes', :id => 'by' %> <%= f.submit 'Vielleicht doch!', :name => 'maybe', :id => 'bm' %>
+      <% end %>
     <% end %>
   <% else %>
-    <h2>Die <em>Hamburg<span>++</span></em> ist vorüber!</h2>
+    <h2>Klingt das gut? Machst Du mit?</h2>
+    <%= form_for current_user, :as => :user, :url => {:action => :rsvp} do |f| %>
+    <%= f.text_field :comment, :placeholder => 'Kommentar' %>
+    <%= f.submit 'Ja', :name => 'yes', :id => 'by' %> <%= f.submit 'Nein', :name => 'no', :id => 'bn' %> <%= f.submit 'Vielleicht', :name => 'maybe', :id => 'bm' %>
+    <% end %>
   <% end %>
-  <p><%= link_to 'Like uns auf Facebook', 'https://www.facebook.com/hamburgplusplus' %> oder <%= link_to 'folge uns auf Twitter', 'https://twitter.com/HH_PlusPlus' %>, um über das nächste Event informiert zu werden!</p>
 </div>
-
+ 
 <div id="participants">
-  <h2>Wer war da?</h2>
+  <h2>teilnehmerliste</h2>
   <div class="ptc" id="yes">
-    <h3>Auf jeden Fall<%- if @users.include?(:yes) %> (<%= @users[:yes].select{|x| x.arrived}.size %>)<% end %></h3>
+    <h3>ja<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %> <a href="#maybe">vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %></a></h3>
     <ul>
-      <%- @users[:yes].select{|x| x.arrived}.each do |user| %>
+      <%- @users[:yes].each do |user| %>
       <li><%= render :partial => 'user', :locals => { :user => user } %></li>
       <%- end %>
     </ul>
   </div>
-</div>
-
-<div id="twitter">
-  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-  <script>
-  new TWTR.Widget({
-    version: 2,
-    type: 'search',
-    search: '#HHPP OR HH_PlusPlus',
-    interval: 6000,
-    title: 'Eine Art Barcamp',
-    subject: 'Hamburg++',
-    width: 300,
-    height: 300,
-    theme: {
-      shell: {
-        background: '#8ec1da',
-        color: '#ffffff'
-      },
-      tweets: {
-        background: '#ffffff',
-        color: '#444444',
-        links: '#1985b5'
-      }
-    },
-    features: {
-      scrollbar: true,
-      loop: false,
-      live: true,
-      hashtags: true,
-      timestamp: true,
-      avatars: true,
-      toptweets: false,
-      behavior: 'all'
-    }
-  }).render().start();
-  </script>
+  <div class="ptc" id="maybe">
+    <h3>vielleicht<%- if @users.include?(:maybe) %> (<%= @users[:maybe].size %>)<% end %> <a href="#yes">ja<%- if @users.include?(:yes) %> (<%= @users[:yes].size %>)<% end %></a></h3>
+    <ul>
+      <%- @users[:maybe].each do |user| %>
+      <li><%= render :partial => 'user', :locals => { :user => user } %></li>
+      <%- end %>
+    </li>
+  </div>
 </div>
 
 <div id="sponsors">
-  <h2>Unterstützer<small> (<%= link_to 'Info für Sponsoren', '/sponsoring' %>)</small></h2>
+  <h2>sponsoren<small> (<%= link_to 'Info für Sponsoren', '/sponsoring' %>)</small></h2>
   <p>Vielen Dank an:</p>
   <ul>
     <% @sponsors.each do |sponsor| %>
