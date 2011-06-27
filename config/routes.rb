@@ -5,6 +5,7 @@ Plusplus::Application.routes.draw do
   get "/sponsoring" => 'home#sponsoring'
   get "/credits" => 'home#credits'
   get "/admin" => 'home#admin'
+  get "/about" => 'home#about'
   
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "home#index"

@@ -35,6 +35,7 @@ class HomeController < ApplicationController
   def impressum; end
   def sponsoring; end
   def credits; end
+  def about; end
   
   def admin
     ensure_admin

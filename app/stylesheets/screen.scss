@@ -26,6 +26,7 @@ body {
 }
 #flash {
   position: absolute;
+  z-index: 500;
   top: 0;
   width: $width;
   p {
@@ -57,7 +58,6 @@ body {
     a {
       display: block;
       position: absolute;
-      z-index: -10;
       margin-left: -72px;
       text-decoration: none;
       background: url(/images/logo.png) no-repeat 0 0;
