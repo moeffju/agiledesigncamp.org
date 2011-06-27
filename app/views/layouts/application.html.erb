@@ -46,11 +46,11 @@
     </div>
     <div class="nc">
       <%= current_user.name %><%- if is_admin? %> (<%= link_to 'Admin', '/admin' %>)<% end %>
-      <br><%= link_to "Abmelden", signout_path %>
+      <br><%= link_to "sign out", signout_path %>
     </div>
   </div>
 <% else %>
-  Einloggen <%= link_to "mit Twitter", "/auth/twitter" %> oder <%= link_to "mit Facebook", "/auth/facebook" %>
+  sign in <%= link_to "via twitter", "/auth/twitter" %> or <%= link_to "via facebook", "/auth/facebook" %>
 <% end %>
 </div>
 
@@ -60,9 +60,8 @@
 
 <div id="footer">
   <p class="links">
-    <%= link_to 'Sponsoring', '/sponsoring' %> | 
-    <%= link_to 'Credits', '/credits' %> | 
-    <%= link_to 'Datenschutz & Impressum', '/impressum' %>
+    <%= link_to 'sponsoring', '/sponsoring' %> | 
+    <%= link_to 'privacy policy and imprint', '/impressum' %>
   </p>
 </div>
 
