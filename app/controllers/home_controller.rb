@@ -9,24 +9,22 @@ class HomeController < ApplicationController
   end
 
   def rsvp
-    redirect_to '/', :alert => 'Das Event ist vorbei!'
-    return
-
     unless current_user
-      redirect_to '/signin', :alert => 'Bitte melde dich erst an!'
+      session[:rsvp_saved_params] = params
+      redirect_to '/signin', :alert => 'please sign in first!'
       return
     end
     current_user.comment = params[:user][:comment]
     current_user.signup_at = Time.now
     if params[:yes]
       current_user.status = 1
-      flash[:success] = 'Du bist dabei!'
+      flash[:success] = 'you\'re in!'
     elsif params[:no]
       current_user.status = 0
-      flash[:notice] = 'Wir werden Dich vermissen. :('
+      flash[:notice] = 'we will miss you :('
     elsif params[:maybe]
       current_user.status = 2
-      flash[:notice] = 'Bitte gib uns schnellstmöglich Bescheid, damit wir planen können!'
+      flash[:notice] = 'please let us know whether you can make it asap'
     else
       redirect_to '/' and return
     end
