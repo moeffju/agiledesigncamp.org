@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110517111143) do
 
-  create_table "rsvps", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "status"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sponsors", :force => true do |t|
     t.string   "name"
     t.string   "image"

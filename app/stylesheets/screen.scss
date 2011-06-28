@@ -112,6 +112,12 @@ body {
 #was, #wann, #wo {
   @include column(8);
 }
+#was h4 {
+  margin-bottom: 0.25em;
+}
+#was h4:last-child {
+  margin-bottom: 1em;
+}
 #wo {
   @include last;
 }
