@@ -38,8 +38,8 @@
   <h1><%= link_to 'agile design camp', '/' %></h1>
 </div>
 
-<div id="nav">
 <% if current_user %>
+<div id="nav">
   <div class="u">
     <div class="a">
       <%= image_tag(current_user.image, :alt => current_user.name) %>
@@ -49,10 +49,8 @@
       <br><%= link_to "sign out", signout_path %>
     </div>
   </div>
-<% else %>
-  <!-- sign in <%= link_to "via twitter", "/auth/twitter" %> or <%= link_to "via facebook", "/auth/facebook" %> -->
+</div>  
 <% end %>
-</div>
 
 <div id="content">
 <%= yield %>
