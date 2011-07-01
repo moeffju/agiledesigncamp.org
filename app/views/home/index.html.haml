@@ -16,85 +16,76 @@
       });
     });
 
-#was
+#whatis
   %h2
     what?
-    %small
-      = link_to 'read on…', '/about'
-  %h4 agile design is about
-  %ul
-    %li integrating the designer's work into agile software development.
-    %li rethinking the role of design.
-    %li thinking in structures and pathways.
-  %h4 agile design is
-  %ul
-    %li user-driven.
-    %li collaborative and open to change. 
-    %li aiming at delivering simple and rapid results.
-  %p agile design is a new concept, not yet fully understood and seldom practised. this is why we have to talk about it.
+    %small= link_to 'read on…', '/about'
+  %p agile design is about integrating the designer's work into agile software development, rethinking the role of design and thinking in structures and pathways. agile design is user-driven, collaborative and open to change, and aims to deliver simple and rapid results. agile design is a new concept, not yet fully understood and seldom practised. this is why we have to talk about it.
 
-#wann
-  %h2 when?
-  %p
-    %strong july 23./24., 2011
-
-#wo
-  %h2 where?
-  %p hamburg, exact location tbd.
-
-#rsvp{ :class => (current_user ? "status-#{current_user.status}" : "status-none") }
-  - if current_user
-    - if current_user.status == 1
-      %h2 Count me in!
-      = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-        = f.text_field :comment, :placeholder => 'Comment'
-        = f.submit 'Sorry, can\'t make it', :name => 'no', :id => 'bn'
-        = f.submit 'Just maybe', :name => 'maybe', :id => 'bm'
-    - elsif current_user.status == 2
-      %h2 Not sure I can make it
-      = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-        = f.text_field :comment, :placeholder => 'Comment'
-        = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
-        = f.submit '\'fraid not', :name => 'no', :id => 'bn'
-    - else
-      %h2 I can't attend :(
-      = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-        = f.text_field :comment, :placeholder => 'Comment'
-        = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
-        = f.submit 'Maybe I can!', :name => 'maybe', :id => 'bm'
+#eventbox
+  #eventdata
+    agile design camp
+    %br
+    23./24. juli 2011
+    %br
+    hamburg
+  - if current_user and current_user.status == 1
+    = link_to 'edit your profile', registration_form_path
   - else
-    %h2 Sound good? You in?
-    = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-      = f.text_field :comment, :placeholder => 'Comment'
-      = f.submit 'Yeah', :name => 'yes', :id => 'by'
-      = f.submit 'No', :name => 'no', :id => 'bn'
-      = f.submit 'Maybe', :name => 'maybe', :id => 'bm'
- 
-#participants
-  %h2 participants
-  .ptc#yes
-    %h3
-      = participants_header(@users, :yes, 'yes')
-      = link_to participants_header(@users, :maybe, 'maybe'), '#maybe'
-    %ul
-      - @users[:yes].each do |user|
-        %li= render :partial => 'user', :locals => { :user => user }
-  .ptc#maybe
-    %h3
-      = participants_header(@users, :maybe, 'maybe')
-      = link_to participants_header(@users, :yes, 'yes'), '#yes'
-    %ul
-      - @users[:maybe].each do |user|
-        %li= render :partial => 'user', :locals => { :user => user }
+    = link_to 'register now', registration_form_path
 
+/
+  #rsvp{ :class => (current_user ? "status-#{current_user.status}" : "status-none") }
+    - if current_user
+      - if current_user.status == 1
+        %h2 Count me in!
+        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
+          = f.text_field :comment, :placeholder => 'Comment'
+          = f.submit 'Sorry, can\'t make it', :name => 'no', :id => 'bn'
+          = f.submit 'Just maybe', :name => 'maybe', :id => 'bm'
+      - elsif current_user.status == 2
+        %h2 Not sure I can make it
+        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
+          = f.text_field :comment, :placeholder => 'Comment'
+          = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
+          = f.submit '\'fraid not', :name => 'no', :id => 'bn'
+      - else
+        %h2 I can't attend :(
+        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
+          = f.text_field :comment, :placeholder => 'Comment'
+          = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
+          = f.submit 'Maybe I can!', :name => 'maybe', :id => 'bm'
+    - else
+      %h2 Sound good? You in?
+      = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
+        = f.text_field :comment, :placeholder => 'Comment'
+        = f.submit 'Yeah', :name => 'yes', :id => 'by'
+        = f.submit 'No', :name => 'no', :id => 'bn'
+        = f.submit 'Maybe', :name => 'maybe', :id => 'bm'
+
+- user_limit = 10
+#participants
+  %h2
+    participants
+    - if @users[:yes].size > user_limit
+      %small= link_to 'show all', users_path
+  %ul.userlist
+    - @users[:yes][0,user_limit].each do |user|
+      %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
+    - if @users[:yes].size > user_limit
+      %li= link_to "show all #{@users[:yes].size} participants", users_path
+
+#newsfeed
+  &nbsp;
+  - if false
+    %h2
+      newsfeed
+      %small= link_to 'show all', news_index_path
+  
 #sponsors
   %h2
     sponsors
-    %small
-      (
-      = link_to 'info for sponsors', '/sponsoring'
-      )
-  %p thanks to:
+    %small= link_to 'info for sponsors', sponsoring_path
   %ul
     - @sponsors.each do |sponsor|
       %li

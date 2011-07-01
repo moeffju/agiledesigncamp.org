@@ -1,0 +1,5 @@
+%h2
+  participants
+%ul.userlist
+  - @users[:yes].each do |user|
+    %li.usertile= render :partial => 'shared/user', :locals => { :user => user }

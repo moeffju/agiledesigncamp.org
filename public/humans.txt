@@ -1,7 +1,25 @@
-Idee & Umsetzung
-================
+agile design camp {
 
-Matthias Bauer, René Sasse, Volker Graubaum, Martin Thielecke
+               -oso:
+          .dMNhooNMMm/
+        ` ...sMMMMMMMM+
+       hMMh+-sMMMMMMMMN`
+    .-:NNhNMMMMMMMMMMMM-
+    `/o/`  dMMMMMMMMMMM.
+         -hMMNmdMMMMMMy
+            `.-+NMMMMs
+             -+syys+.
 
+}
 
-Mehr Informationen: http://hamburg-plusplus.de/credits
+in reverse alphabetical order:
+
+wolfgang wopperer
+liron tocker
+friederike schmiedebach
+sven kräuter
+jan krutisch
+katrin kampfrath
+björn jensen
+fabian fabian
+matthias bauer

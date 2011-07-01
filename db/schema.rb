@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517111143) do
+ActiveRecord::Schema.define(:version => 20110701160416) do
 
   create_table "rsvps", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20110517111143) do
     t.boolean  "arrived"
     t.datetime "arrived_at"
     t.datetime "signup_at"
+    t.string   "position"
+    t.string   "company"
+    t.text     "company_url"
+    t.string   "full_name"
+    t.boolean  "first_barcamp"
+    t.string   "tshirt_size"
   end
 
 end
