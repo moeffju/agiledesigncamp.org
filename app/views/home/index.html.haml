@@ -34,35 +34,6 @@
   - else
     = link_to 'register now', registration_form_path
 
-/
-  #rsvp{ :class => (current_user ? "status-#{current_user.status}" : "status-none") }
-    - if current_user
-      - if current_user.status == 1
-        %h2 Count me in!
-        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-          = f.text_field :comment, :placeholder => 'Comment'
-          = f.submit 'Sorry, can\'t make it', :name => 'no', :id => 'bn'
-          = f.submit 'Just maybe', :name => 'maybe', :id => 'bm'
-      - elsif current_user.status == 2
-        %h2 Not sure I can make it
-        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-          = f.text_field :comment, :placeholder => 'Comment'
-          = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
-          = f.submit '\'fraid not', :name => 'no', :id => 'bn'
-      - else
-        %h2 I can't attend :(
-        = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-          = f.text_field :comment, :placeholder => 'Comment'
-          = f.submit 'Yes I can!', :name => 'yes', :id => 'by'
-          = f.submit 'Maybe I can!', :name => 'maybe', :id => 'bm'
-    - else
-      %h2 Sound good? You in?
-      = form_for current_user, :as => :user, :url => {:action => :rsvp} do |f|
-        = f.text_field :comment, :placeholder => 'Comment'
-        = f.submit 'Yeah', :name => 'yes', :id => 'by'
-        = f.submit 'No', :name => 'no', :id => 'bn'
-        = f.submit 'Maybe', :name => 'maybe', :id => 'bm'
-
 - user_limit = 10
 #participants
   %h2
