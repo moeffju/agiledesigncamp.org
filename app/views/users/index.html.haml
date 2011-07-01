@@ -4,7 +4,7 @@
 
 .yes
   %h3
-    coming
+    attending
     = "(#{@users[:yes].size})"
   %ul.userlist
     - @users[:yes].each do |user|
@@ -13,7 +13,7 @@
 - if @users[:maybe].size > 0
   .maybe
     %h3
-      possibly coming
+      possibly attending
       = "(#{@users[:maybe].size})"
     %ul.userlist
       - @users[:maybe].each do |user|
