@@ -9,13 +9,22 @@ Plusplus::Application.routes.draw do
   
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "home#index"
-  get '/signin' => "sessions#signin"
+  get "/signin" => "sessions#signin"
   get "/signout" => "sessions#destroy", :as => :signout
   
-  scope '/admin' do
+  resources :users, :only => [:index]
+  get '/register' => 'users#register', :as => :registration_form
+  put '/register' => 'users#register'
+  resources :news, :only => [:index, :show]
+  
+  namespace :admin do
     resources :sponsors
-    get '/users' => 'users#index', :as => :users
-    get '/users/check_in/:id' => 'users#check_in', :as => :users_check_in
-    get '/users/check_out/:id' => 'users#check_out', :as => :users_check_out
+    resources :users do
+      member do
+        get 'check_in'
+        get 'check_out'
+      end
+    end
+    resources :news
   end
 end

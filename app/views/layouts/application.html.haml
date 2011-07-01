@@ -1,0 +1,56 @@
+!!! 5
+%html
+  %head
+    %title= ((@title ? "#{@title} - " : '') + "agile design camp")
+    = csrf_meta_tag
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = yield :stylesheets
+    = javascript_include_tag 'jquery.min', 'rails', 'application', :cache => 'all'
+    :javascript
+      var _gaq = _gaq || [];
+      //_gaq.push(['_setAccount', 'UA-75436-9']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+      _gaq.push(['_gat._anonymizeIp']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    = yield :javascripts
+  %body{:class => [params[:controller], params[:action]] * '-'}
+    #userbar
+      .w
+        - if current_user
+          .u
+            .a= image_tag(current_user.image, :alt => current_user.name)
+            .nc
+              = current_user.name
+          - if is_admin?
+            = link_to 'admin', admin_path
+          = link_to "sign out", signout_path
+        - else
+          = link_to "sign in", signin_path, :class => 'lightbox'
+    - if flash.present?
+      #flash-holder
+        #flash
+          - flash.each do |key, msg|
+            = content_tag :div, msg, :class => ["flash", key], :id => "flash_#{key}"
+            :javascript
+              setTimeout(function(){ $(window).bind('click mousemove keypress', function(){ $('#flash_#{key}').fadeOut('slow'); }) }, 1000);
+    #wrapper
+      #container
+        #header
+          %h1
+            = link_to 'agile design camp', root_path
+        #content
+          = yield
+    #footer
+      .w
+        = link_to 'sponsoring', sponsoring_path
+        = link_to 'privacy policy and imprint', impressum_path

@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
         flash[:notice] = 'please let us know whether you can make it asap'
       end
     end
-    redirect_to root_url, :notice => "signed in!"
+    session[:returnto] ||= root_url
+    redirect_to session[:returnto], :notice => "signed in!"
   end
 
   def destroy

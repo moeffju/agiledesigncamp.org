@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   def ensure_admin
     raise ActionController::RoutingError.new('Not Found') unless is_admin?
   end
+  
+  def authenticate
+    unless current_user
+      session[:returnto] = request.fullpath
+      redirect_to signin_path and return
+    end
+  end
 
   private
 
