@@ -185,6 +185,9 @@ h1,h2,h3 {
   }
 }
 .userlist, .usertile { list-style: none; padding: 0; }
+.userlist {
+  @include clearfix;
+}
 .usertile {
   float: left;
   width: 300px;
@@ -326,3 +329,10 @@ h1,h2,h3 {
     margin-top: 9px;
   }
 }
+
+/*#back {
+  position: absolute;
+  top: 144px;
+  left: 35px;
+  font-size: 11px;
+}*/

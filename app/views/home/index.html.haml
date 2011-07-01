@@ -38,8 +38,7 @@
 #participants
   %h2
     participants
-    - if @users[:yes].size > user_limit
-      %small= link_to 'show all', users_path
+    %small= link_to 'show all', users_path
   %ul.userlist
     - @users[:yes][0,user_limit].each do |user|
       %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
