@@ -23,4 +23,10 @@ class User < ActiveRecord::Base
         end
     end
   end
+  
+  after_find :add_full_name
+  
+  def add_full_name
+    self.full_name ||= self.name
+  end
 end

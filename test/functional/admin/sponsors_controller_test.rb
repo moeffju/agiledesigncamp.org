@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SponsorsControllerTest < ActionController::TestCase
+class Admin::SponsorsControllerTest < ActionController::TestCase
   setup do
     @sponsor = sponsors(:one)
   end
@@ -21,7 +21,7 @@ class SponsorsControllerTest < ActionController::TestCase
       post :create, :sponsor => @sponsor.attributes
     end
 
-    assert_redirected_to sponsor_path(assigns(:sponsor))
+    assert_redirected_to admin_sponsors_path
   end
 
   test "should show sponsor" do
@@ -36,7 +36,7 @@ class SponsorsControllerTest < ActionController::TestCase
 
   test "should update sponsor" do
     put :update, :id => @sponsor.to_param, :sponsor => @sponsor.attributes
-    assert_redirected_to sponsor_path(assigns(:sponsor))
+    assert_redirected_to admin_sponsors_path
   end
 
   test "should destroy sponsor" do
@@ -44,6 +44,6 @@ class SponsorsControllerTest < ActionController::TestCase
       delete :destroy, :id => @sponsor.to_param
     end
 
-    assert_redirected_to sponsors_path
+    assert_redirected_to admin_sponsors_path
   end
 end

@@ -1,14 +1,14 @@
 .u
   .a
-    = image_tag(user.image, :alt => user.full_name)
+    = link_to image_tag(user.image, :alt => user.full_name), edit_admin_user_path(user)
   .nc
-    .name= user.full_name
+    .name= link_to user.full_name, edit_admin_user_path(user)
     .links
       = link_to user.provider.capitalize, user.url, :class => "icon-#{user.provider}"
     .more
       - if user.position.present? && user.company.present?
         %span.position= user.position
-        at
+        %span.at at
         - if user.company_url
           %span.company= link_to user.company, user.company_url
         - else
