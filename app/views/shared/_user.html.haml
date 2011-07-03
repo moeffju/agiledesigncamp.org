@@ -5,8 +5,10 @@
   .nc
     .name= user.full_name
     .links
-      - if false
-        = link_to user.provider.capitalize, user.url, :class => "icon-#{user.provider}"
+      - if user.homepage
+        = link_to 'homepage', user.homepage, :class => 'icon-website'
+      - user.tokens.each do |token|
+        = link_to token.provider.capitalize, token_link(token), :class => "icon-#{token.provider}"
     .more.overflow-fade-x
       .position
         - if user.position.present? && user.company.present?

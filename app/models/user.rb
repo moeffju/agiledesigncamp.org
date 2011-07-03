@@ -1,9 +1,9 @@
 require 'uri'
 
 class User < ActiveRecord::Base
-  has_many :tokens
+  has_many :tokens, :dependent => :destroy
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  attr_accessible :comment, :position, :company, :company_url, :full_name, :first_barcamp, :tshirt_size, :status, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :comment, :position, :company, :company_url, :full_name, :homepage, :first_barcamp, :tshirt_size, :status, :email, :password, :password_confirmation, :remember_me
   default_scope order('created_at DESC')
   scope :maybe, where(:status => 2)
   scope :yes, where(:status => 1)
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if auth = session[:omniauth]
         user.apply_omniauth(auth)
-        user.tokens.build(:provider => auth['provider'], :uid => auth['uid'], :data => auth['user_info'])
+        user.tokens.build(:provider => auth['provider'], :uid => auth['uid'], :data => auth)
       end
     end
   end
@@ -27,17 +27,18 @@ class User < ActiveRecord::Base
     when 'twitter'
       self.full_name = auth['user_info']['name']
       self.image = auth['user_info']['image']
+      self.url = auth['user_info']['urls']['Twitter']
       self.homepage = auth['user_info']['urls']['Website']
     when 'facebook'
       self.full_name = auth['user_info']['name']
       self.image = auth['user_info']['image']
+      self.url = auth['user_info']['urls']['Facebook']
       self.homepage = auth['user_info']['urls']['Website']
-      self.email = auth['extra']['user_hash']['email']
+      self.email = auth['user_info']['email']
+      self.position = auth['extra']['user_hash']['work'][0]['position']['name']
+      self.company = auth['extra']['user_hash']['work'][0]['employer']['name']
     #when 'google_apps'
     end
-    #self.password = Devise.friendly_token[0,20]
-
-    tokens.build(:provider => auth['provider'], :uid => auth['uid'], :data => auth['user_info'])
   end
   
   def update_with_password(params={})
@@ -46,16 +47,21 @@ class User < ActiveRecord::Base
   end
   
   after_find :add_full_name
-  #before_save :check_company_url
+  before_save :check_urls
   
   def add_full_name
     self.full_name ||= self.name
   end
   
-  def check_company_url
-    if (self.company_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).nil?
-      if ('http://' + self.company_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).nil?
+  def check_urls
+    if self.company_url.present? and (self.company_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).nil?
+      if (('http://' + self.company_url) =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]) == 0
         self.company_url = 'http://' + self.company_url
+      end
+    end
+    if self.homepage.present? and (self.homepage =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).nil?
+      if (('http://' + self.homepage) =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]) == 0
+        self.homepage = 'http://' + self.homepage
       end
     end
   end
