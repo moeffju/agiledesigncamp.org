@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  default_scope order('updated_at DESC')
+  default_scope order('created_at DESC')
   scope :maybe, where(:status => 2)
   scope :yes, where(:status => 1)
   scope :no, where(:status => 0)

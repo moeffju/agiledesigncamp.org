@@ -188,6 +188,19 @@ h1,h2,h3 {
 .userlist {
   @include clearfix;
 }
+.overflow-fade-x {
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: transparent url(/images/blueprint-tile-fade.png) 0px 0px;
+    //outline: 1px solid rgba(0,255,0,.4);
+  }
+}
 .usertile {
   float: left;
   width: 300px;
@@ -203,7 +216,7 @@ h1,h2,h3 {
     .nc {
       width: 300px - 48px - 6px;
       float: left;
-      padding-top: 4px;
+      padding-top: 0px;
       .name {
         float: left;
         font-size: 13px;
@@ -214,11 +227,25 @@ h1,h2,h3 {
         float: left;
       }
       .more {
+        width: 300px - 48px - 6px - 10px;
         font-size: 11px;
+        line-height: 13px;
         clear: left;
         a {
           color: $blue;
           text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        div.position {
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        div.comment {
+          font-style: italic;
+          white-space: nowrap;
+          overflow: hidden;
         }
       }
     }

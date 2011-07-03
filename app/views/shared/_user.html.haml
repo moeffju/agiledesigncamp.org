@@ -5,13 +5,16 @@
     .name= user.full_name
     .links
       = link_to user.provider.capitalize, user.url, :class => "icon-#{user.provider}"
-    .more
-      - if user.position.present? && user.company.present?
-        %span.position= user.position
-        at
-        - if user.company_url
-          %span.company= link_to user.company, user.company_url
+    .more.overflow-fade-x
+      .position
+        - if user.position.present? && user.company.present?
+          %span.position= user.position
+          %span.at @
+          - if user.company_url
+            %span.company= link_to user.company, user.company_url
+          - else
+            %span.company= user.company
         - else
-          %span.company= user.company
-      - else
+          &nbsp;
+      .comment
         %span.comment= user.comment
