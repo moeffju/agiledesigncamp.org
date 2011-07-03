@@ -14,6 +14,26 @@ class Admin::UsersController < ApplicationController
       format.xml  { render :xml => @users }
     end
   end
+  
+  def show
+    @user = User.find(params[:id])
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    @user.save and redirect_to admin_users_path
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
+  end
 
   def check_in
     @user = User.find(params[:id])

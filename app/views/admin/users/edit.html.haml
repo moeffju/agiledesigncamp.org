@@ -1,0 +1,20 @@
+#back= link_to "← back", admin_users_path
+
+%h2 editing user
+%h3= @user.full_name
+
+= simple_form_for @user, :url => admin_user_path do |f|
+  .l
+    = f.input :status, :required => true, :label => 'are you coming?', :collection => { :yes => 1, :no => 0, :maybe => 2 }, :include_blank => false
+  .l
+    = f.input :full_name, :required => true, :label => 'full name', :placeholder => 'your full name (for the badge)'
+    = f.input :position, :label => 'job title', :placeholder => 'what you work as'
+    = f.input :company, :label => 'company name', :placeholder => 'where you work'
+    = f.input :company_url, :label => 'company homepage', :placeholder => 'your company\'s homepage', :as => :string
+  .l
+    = f.input :first_barcamp, :label => "this is my first barcamp"
+    = f.input :tshirt_size, :required => true, :label => "choose your t-shirt size", :collection => %w(WXS WS WM WL WXL XS S M L XL XXL 3XL 4XL 5XL 6XL), :include_blank => false
+  .l
+    = f.input :comment, :label => 'comment', :placeholder => 'anything you want to let the world know'
+  .l
+    = f.button :submit, :value => 'go for it', :class => 'actionbutton'

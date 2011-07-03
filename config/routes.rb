@@ -19,7 +19,7 @@ Plusplus::Application.routes.draw do
   
   namespace :admin do
     resources :sponsors
-    resources :users do
+    resources :users, :only => [:index, :edit, :update, :destroy] do
       member do
         get 'check_in'
         get 'check_out'

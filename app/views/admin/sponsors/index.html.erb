@@ -1,6 +1,6 @@
 <h1>Listing sponsors</h1>
 
-<p><%= link_to 'New Sponsor', new_sponsor_path %></p>
+<p><%= link_to 'New Sponsor', new_admin_sponsor_path %></p>
 
 <table>
   <tr>
@@ -15,7 +15,7 @@
     <td><%= sponsor.name %><br><%= link_to sponsor.url, sponsor.url %></td>
     <td><% if sponsor.image.present? %><%= image_tag sponsor.image.url %><% else %>–<% end %></td>
     <td><big><%= sponsor.amount %>€</big></td>
-    <td class="actions"><%= link_to 'Show', sponsor %> | <%= link_to 'Edit', edit_sponsor_path(sponsor) %> | <%= link_to 'Destroy', sponsor, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="actions"><%= link_to 'Show', @sponsor %> | <%= link_to 'Edit', edit_admin_sponsor_path(sponsor) %> | <%= link_to 'Destroy', @sponsor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

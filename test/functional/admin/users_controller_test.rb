@@ -1,49 +1,32 @@
 require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
+  setup do
+    @user = users(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should get create" do
-    get :create
-    assert_response :success
-  end
-
-  test "should get show" do
-    get :show
-    assert_response :success
+    assert_not_nil assigns(:users)
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, :id => @user.to_param
     assert_response :success
   end
 
-  test "should get update" do
-    get :update
-    assert_response :success
+  test "should update user" do
+    put :update, :id => @user.to_param, :user => @user.attributes
+    assert_not_nil assigns(:user)
+    assert_redirected_to admin_users_path
   end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
+  test "should destroy user" do
+    assert_difference('User.count', -1) do
+      delete :destroy, :id => @user.to_param
+    end
 
-  test "should get check_in" do
-    get :check_in
-    assert_response :success
+    assert_redirected_to admin_users_path
   end
-
-  test "should get check_out" do
-    get :check_out
-    assert_response :success
-  end
-
 end

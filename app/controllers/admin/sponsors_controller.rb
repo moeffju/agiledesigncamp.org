@@ -1,4 +1,4 @@
-class SponsorsController < ApplicationController
+class Admin::SponsorsController < ApplicationController
   before_filter :ensure_admin
   
   # GET /sponsors
@@ -46,7 +46,7 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to(sponsors_url, :notice => 'Sponsor was successfully created.') }
+        format.html { redirect_to(admin_sponsors_url, :notice => 'Sponsor was successfully created.') }
         format.xml  { render :xml => @sponsor, :status => :created, :location => @sponsor }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
-        format.html { redirect_to(sponsors_url, :notice => 'Sponsor was successfully updated.') }
+        format.html { redirect_to(admin_sponsors_url, :notice => 'Sponsor was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class SponsorsController < ApplicationController
     @sponsor.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sponsors_url) }
+      format.html { redirect_to(admin_sponsors_url) }
       format.xml  { head :ok }
     end
   end

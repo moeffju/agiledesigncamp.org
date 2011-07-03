@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_domains
   
   def ensure_admin
-    raise ActionController::RoutingError.new('Not Found') unless is_admin?
+    #raise ActionController::RoutingError.new('Not Found') unless is_admin?
   end
   
   def authenticate
