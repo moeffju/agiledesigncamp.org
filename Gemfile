@@ -11,6 +11,7 @@ group :production do
   gem 'thin'
 end
 
+gem 'devise'
 gem 'omniauth', '0.2.0'
 gem 'carrierwave'
 

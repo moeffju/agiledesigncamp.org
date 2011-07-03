@@ -12,15 +12,15 @@ class ApplicationController < ActionController::Base
   def authenticate
     unless current_user
       session[:returnto] = request.fullpath
-      redirect_to signin_path and return
+      redirect_to new_user_session_path and return
     end
   end
 
   private
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
+#  def current_user
+#    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+#  end
   
   def is_admin?
     current_user && %w(5618832 14583478).include?(current_user.uid)

@@ -1,20 +1,13 @@
 Plusplus::Application.routes.draw do
   root :to => 'home#index'
-  match "/rsvp" => 'home#rsvp'
   get "/impressum" => 'home#impressum'
   get "/sponsoring" => 'home#sponsoring'
   get "/credits" => 'home#credits'
   get "/admin" => 'home#admin'
   get "/about" => 'home#about'
   
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "home#index"
-  get "/signin" => "sessions#signin"
-  get "/signout" => "sessions#destroy", :as => :signout
-  
+  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, :only => [:index]
-  get '/register' => 'users#register', :as => :registration_form
-  put '/register' => 'users#register'
   resources :news, :only => [:index, :show]
   
   namespace :admin do

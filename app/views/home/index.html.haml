@@ -30,9 +30,9 @@
     %br
     hamburg
   - if current_user and current_user.status == 1
-    = link_to 'edit your profile', registration_form_path
+    = link_to 'edit your profile', edit_user_registration_path
   - else
-    = link_to 'register now', registration_form_path
+    = link_to 'register now', new_user_registration_path
 
 - user_limit = 10
 #participants

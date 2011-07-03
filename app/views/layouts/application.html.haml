@@ -10,32 +10,39 @@
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
     = yield :stylesheets
     = javascript_include_tag 'jquery.min', 'rails', 'application', :cache => 'all'
-    :javascript
-      var _gaq = _gaq || [];
-      //_gaq.push(['_setAccount', 'UA-75436-9']);
-      _gaq.push(['_trackPageview']);
-      _gaq.push(['_trackPageLoadTime']);
-      _gaq.push(['_gat._anonymizeIp']);
+    - if Rails.env.production?
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24330973-1']);
+        _gaq.push(['_trackPageview']);
+        _gaq.push(['_trackPageLoadTime']);
+        _gaq.push(['_gat._anonymizeIp']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    - else
+      :javascript
+        // Google Analytics is disabled in the development environment
+        var _gaq = _gaq || [];
     = yield :javascripts
-  %body{:class => [params[:controller], params[:action]] * '-'}
+  %body{:class => [params[:controller].split('/')[-1], params[:action]] * '-'}
     #userbar
       .w
         - if current_user
           .u
-            .a= image_tag(current_user.image, :alt => current_user.name)
+            .a
+              - if current_user.image
+                = image_tag(current_user.image, :alt => current_user.name)
             .nc
-              = current_user.name
+              = current_user.full_name
           - if is_admin?
             = link_to 'admin', admin_path
-          = link_to "sign out", signout_path
+          = link_to "sign out", destroy_user_session_path, :method => 'delete'
         - else
-          = link_to "sign in", signin_path, :class => 'lightbox'
+          = link_to "sign in", new_user_session_path, :class => 'lightbox'
     - if flash.present?
       #flash-holder
         #flash

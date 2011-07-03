@@ -1,0 +1,17 @@
+%h2 please choose
+
+%div
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .inputs
+      = f.input :email, :required => false, :autofocus => true, :label => 'e-mail'
+      = f.input :password, :required => false, :label => 'password'
+      = f.input :remember_me, :as => :boolean, :label => 'keep me logged in' if devise_mapping.rememberable?
+
+    .actions
+      = f.button :submit, "sign in"
+
+%ul.auth_providers
+  - if devise_mapping.omniauthable?
+    - resource_class.omniauth_providers.each do |provider|
+      %li= link_to "sign in with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
+  %li= link_to 'create new account', new_user_registration_path

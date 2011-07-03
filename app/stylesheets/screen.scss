@@ -263,11 +263,11 @@ h1,h2,h3 {
 .copy {
   @include column(6);
 }
-.sessions-signin {
+.sessions-new, .registrations-new, .registrations-edit {
   #content { @include column(6); }
-  ul {
-    margin-bottom: 20px;
-  }
+}
+ul.auth_providers {
+  margin-bottom: 20px;
   li {
     a {
       display: block;
