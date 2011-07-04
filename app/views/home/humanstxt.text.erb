@@ -14,12 +14,4 @@ agile design camp {
 
 in reverse alphabetical order:
 
-wolfgang wopperer
-liron tocker
-friederike schmiedebach
-sven kräuter
-jan krutisch
-katrin kampfrath
-björn jensen
-fabian fabian
-matthias bauer
+<%= @humans.sort{ |a,b| b.split(/\s/)[-1] <=> a.split(/\s/)[-1] }.join("\n") %>

@@ -1,6 +1,6 @@
 Plusplus::Application.routes.draw do
   root :to => 'home#index'
-  match "/rsvp" => 'home#rsvp'
+  get "/humans.txt" => 'home#humanstxt', :format => :text, :as => :humanstxt
   get "/impressum" => 'home#impressum'
   get "/sponsoring" => 'home#sponsoring'
   get "/credits" => 'home#credits'

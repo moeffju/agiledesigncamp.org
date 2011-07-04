@@ -7,9 +7,11 @@
       = link_to user.provider.capitalize, user.url, :class => "icon-#{user.provider}"
     .more.overflow-fade-x
       .position
-        - if user.position.present? && user.company.present?
+        - if user.position.present?
           %span.position= user.position
+        - if user.position.present? && user.company.present?
           %span.at @
+        - if user.company.present?
           - if user.company_url
             %span.company= link_to user.company, user.company_url
           - else

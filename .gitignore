@@ -9,3 +9,4 @@ tmp/
 public/stylesheets/*.css
 .rvmrc
 bin/
+public/images/icon-*.png
