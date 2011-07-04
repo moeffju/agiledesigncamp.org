@@ -1,15 +1,21 @@
 .u
   .a
-    = image_tag(user.image, :alt => user.full_name)
+    - if user.image
+      = image_tag(user.image, :alt => user.full_name)
   .nc
     .name= user.full_name
     .links
-      = link_to user.provider.capitalize, user.url, :class => "icon-#{user.provider}"
+      - if user.homepage.present?
+        = link_to 'homepage', user.homepage, :class => 'icon-website'
+      - user.tokens.each do |token|
+        = link_to token.provider.capitalize, token_link(token), :class => "icon-#{token.provider}"
     .more.overflow-fade-x
       .position
-        - if user.position.present? && user.company.present?
+        - if user.position.present?
           %span.position= user.position
+        - if user.position.present? && user.company.present?
           %span.at @
+        - if user.company.present?
           - if user.company_url
             %span.company= link_to user.company, user.company_url
           - else

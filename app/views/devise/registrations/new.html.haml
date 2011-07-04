@@ -1,0 +1,35 @@
+%h2 have an account already?
+
+%ul.auth_providers
+  - if devise_mapping.omniauthable?
+    - resource_class.omniauth_providers.each do |provider|
+      %li= link_to "sign in with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
+  %li= link_to 'sign in', new_user_session_path
+
+%h2 create a new account
+
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+
+  .inputs
+    .l
+      = f.input :email, :required => true, :autofocus => true, :label => 'e-mail'
+      = f.input :password, :required => true, :label => 'password'
+      = f.input :password_confirmation, :required => true, :label => 'password confirmation'
+
+    .l
+      = f.input :status, :required => true, :label => 'are you coming?', :collection => { :yes => 1, :no => 0, :maybe => 2 }, :include_blank => false
+    .l
+      = f.input :full_name, :required => true, :label => 'full name', :placeholder => 'your full name (for the badge)'
+      = f.input :homepage, :label => 'homepage', :placeholder => 'your homepage', :as => :string
+      = f.input :position, :label => 'job title', :placeholder => 'what you work as'
+      = f.input :company, :label => 'company name', :placeholder => 'where you work'
+      = f.input :company_url, :label => 'company homepage', :placeholder => 'your company\'s homepage', :as => :string
+    .l
+      = f.input :first_barcamp, :label => "this is my first barcamp"
+      = f.input :tshirt_size, :required => true, :label => "choose your t-shirt size", :collection => %w(WXS WS WM WL WXL XS S M L XL XXL 3XL 4XL 5XL 6XL)
+    .l
+      = f.input :comment, :label => 'comment', :placeholder => 'anything you want to let the world know'
+
+  .actions
+    = f.button :submit, "sign up", :class => 'actionbutton'
