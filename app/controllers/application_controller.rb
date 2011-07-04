@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   
   def check_profile
     if request.get? && request.fullpath != edit_user_registration_path && current_user
-      if (current_user.email && current_user.email.empty?) || current_user.tshirt_size.empty? || current_user.full_name.empty?
+      if current_user.email.nil? || current_user.tshirt_size.empty? || current_user.full_name.empty?
         redirect_to edit_user_registration_path, :notice => 'please complete your profile' and return
       end
     end
