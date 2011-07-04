@@ -5,7 +5,7 @@
   .nc
     .name= user.full_name
     .links
-      - if user.homepage
+      - if user.homepage.present?
         = link_to 'homepage', user.homepage, :class => 'icon-website'
       - user.tokens.each do |token|
         = link_to token.provider.capitalize, token_link(token), :class => "icon-#{token.provider}"
