@@ -2,10 +2,10 @@ class MigrateTokens < ActiveRecord::Migration
   def self.up
     User.all.each do |user|
       data = {
-        user_info: {
-          name: user.name,
-          image: user.image,
-          urls: {}
+        'user_info' => {
+          'name' => user.name,
+          'image' => user.image,
+          'urls' => {}
         }
       }
       data['user_info']['urls'][user.provider.capitalize] = user.url
