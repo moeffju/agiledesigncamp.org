@@ -1,12 +1,20 @@
-%h2 have an account already?
+- unless session[:omniauth]
+  %h2 have an account already?
 
-%ul.auth_providers
-  - if devise_mapping.omniauthable?
-    - resource_class.omniauth_providers.each do |provider|
-      %li= link_to "sign in with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
-  %li= link_to 'sign in', new_user_session_path
+  %ul.auth_providers
+    %li= link_to 'sign in', new_user_session_path
 
-%h2 create a new account
+  %h2 create a new account
+
+  %ul.auth_providers
+    - if devise_mapping.omniauthable?
+      - resource_class.omniauth_providers.each do |provider|
+        %li= link_to "sign up with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
+
+  %h2 ... or create a separate account
+- else
+  %h2 welcome! please complete your profile
+  %p please fill in your e-mail address, pick a password, and choose your t-shirt size.
 
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = f.error_notification
