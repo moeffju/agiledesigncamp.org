@@ -45,7 +45,7 @@ Plusplus::Application.configure do
     :domain => "gmail.com",
     :authentication => :login,
     :user_name => ENV['SMTP_USER'],
-    :password = ENV['SMTP_PASSWORD']
+    :password => ENV['SMTP_PASSWORD']
   }
   
   # Enable threaded mode
