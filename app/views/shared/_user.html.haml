@@ -1,7 +1,6 @@
 .u
   .a
-    - if user.image
-      = image_tag(user.image, :alt => user.full_name)
+    = image_tag(user.image || 'default-user.png', :alt => user.full_name)
   .nc
     .name= user.full_name
     .links
