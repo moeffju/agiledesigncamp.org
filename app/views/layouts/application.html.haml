@@ -29,6 +29,7 @@
         // Google Analytics is disabled in the development environment
         var _gaq = _gaq || [];
     = yield :javascripts
+    = yield :header
   %body{:class => [params[:controller].split('/')[-1], params[:action]] * '-'}
     - if flash.present?
       #flash-holder
@@ -48,6 +49,7 @@
               = current_user.full_name
           - if is_admin?
             = link_to 'admin', admin_path
+          = link_to 'edit profile', edit_user_registration_path
           = link_to "sign out", destroy_user_session_path
         - else
           = link_to "sign in", new_user_session_path, :class => 'lightbox'

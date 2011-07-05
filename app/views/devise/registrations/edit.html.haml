@@ -26,12 +26,17 @@
   .actions
     = f.button :submit, "update profile"
 
-%h2 link other profiles
+%h2 link your other profiles
 
 - if devise_mapping.omniauthable?
   %ul.auth_provider
-  - resource_class.omniauth_providers.each do |provider| 
-    %li= link_to "sign in with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
+  - resource_class.omniauth_providers.each do |provider|
+    - if t = current_user.tokens.find_by_provider(provider)
+      %li
+        #{provider}:
+        = link_to token_link(t), token_link(t)
+    - else
+      %li= link_to "sign in with #{provider.to_s.downcase}", omniauth_authorize_path(resource_name, provider)
 
 %h2 delete profile
 
