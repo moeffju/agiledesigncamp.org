@@ -5,16 +5,30 @@
 
 = simple_form_for @user, :url => admin_user_path do |f|
   .l
-    = f.input :status, :required => true, :label => 'are you coming?', :collection => { :yes => 1, :no => 0, :maybe => 2 }, :include_blank => false
+    = f.input :email, :required => true, :autofocus => true, :label => 'e-mail'
+    = f.input :password, :required => false, :label => 'password'
+    = f.input :password_confirmation, :required => false, :label => 'password confirmation'
+    = f.input :status, :required => true, :label => 'attendance status', :collection => { :yes => 1, :no => 0, :maybe => 2 }, :include_blank => false
   .l
     = f.input :full_name, :required => true, :label => 'full name', :placeholder => 'your full name (for the badge)'
-    = f.input :position, :label => 'job title', :placeholder => 'what you work as'
-    = f.input :company, :label => 'company name', :placeholder => 'where you work'
-    = f.input :company_url, :label => 'company homepage', :placeholder => 'your company\'s homepage', :as => :string
+    = f.input :position, :label => 'job title'
+    = f.input :company, :label => 'company name'
+    = f.input :company_url, :label => 'company homepage', :as => :string
   .l
-    = f.input :first_barcamp, :label => "this is my first barcamp"
-    = f.input :tshirt_size, :required => true, :label => "choose your t-shirt size", :collection => %w(WXS WS WM WL WXL XS S M L XL XXL 3XL 4XL 5XL 6XL)
+    = f.input :first_barcamp, :label => "first barcamp?"
+    = f.input :tshirt_size, :required => true, :label => "t-shirt size", :collection => %w(WXS WS WM WL WXL XS S M L XL XXL 3XL 4XL 5XL 6XL)
   .l
-    = f.input :comment, :label => 'comment', :placeholder => 'anything you want to let the world know'
+    = f.input :comment, :label => 'comment'
   .l
     = f.button :submit, :value => 'go for it', :class => 'actionbutton'
+    = link_to 'delete user', admin_user_path(@user), :confirm => 'Are you sure?', :method => :delete
+
+%h3 tokens
+%ul
+  - @user.tokens.each do |token|
+    %li
+      provider:
+      = token.provider
+      uid:
+      = token.uid
+      = link_to 'delete token', admin_user_token_path(@user, token), :method => :delete

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 3.0.7'
+gem 'thin'
 
 group :development, :test do
   gem 'sqlite3'
@@ -8,7 +9,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'thin'
 end
 
 gem 'devise'

@@ -3,6 +3,8 @@ require 'test_helper'
 class Admin::SponsorsControllerTest < ActionController::TestCase
   setup do
     @sponsor = sponsors(:one)
+    @user = users(:one)
+    sign_in :user, @user
   end
 
   test "should get index" do
