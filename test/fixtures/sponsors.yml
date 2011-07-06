@@ -1,11 +1,17 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  name: MyString
-  image: MyString
-  url: MyText
+  name: example.com
+  image: http://example.com/logo.jpg
+  url: http://example.com/
+  amount: 100
 
 two:
-  name: MyString
-  image: MyString
-  url: MyText
+  name: example.net
+  image: http://example.net/logo.jpg
+  url: http://example.net/
+  amount: 50
+
+three:
+  name: example.net
+  image: http://example.net/logo.jpg
+  url: http://example.net/
+  amount: 25

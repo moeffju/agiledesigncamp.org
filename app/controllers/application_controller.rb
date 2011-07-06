@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   private
   
   def is_admin?
-    current_user && %w(5618832 14583478).include?(current_user.uid)
+    current_user && current_user.is_admin
   end
   
   def redirect_domains

@@ -1,13 +1,11 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
   user_id: 1
-  provider: MyString
-  uid: MyString
-  data: MyText
+  provider: twitter
+  uid: 123456
+  data:
 
 two:
   user_id: 1
-  provider: MyString
-  uid: MyString
-  data: MyText
+  provider: facebook
+  uid: matthias.bauer
+  data:

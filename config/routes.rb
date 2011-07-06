@@ -18,6 +18,7 @@ Plusplus::Application.routes.draw do
         get 'check_in'
         get 'check_out'
       end
+      resources :tokens, :only => [:show, :destroy]
     end
     resources :news
   end

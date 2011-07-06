@@ -2,6 +2,7 @@ one:
   provider: twitter
   uid: '14142789'
   name: mattness
+  email: mattness@example.net
   status: "1"
   comment: ''
   image: http://a2.twimg.com/sticky/default_profile_images/default_profile_3_normal.png
@@ -9,11 +10,13 @@ one:
   full_name: Matthias Bauer
   first_barcamp: f
   tshirt_size: M
+  is_admin: t
 
 two:
   provider: facebook
   uid: "1110945459"
   name: Jan Dirksen
+  email: jan@example.com
   status: "1"
   comment: Can't wait!
   image: http://graph.facebook.com/1110945459/picture?type=square
@@ -21,3 +24,4 @@ two:
   full_name: Jan Dirksen
   first_barcamp: f
   tshirt_size: M
+  is_admin: f
