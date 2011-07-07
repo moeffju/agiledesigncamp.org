@@ -26,7 +26,11 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    @user.save and redirect_to admin_users_path
+    if @user.save
+      redirect_to admin_users_path, :notice => 'User data changed'
+    else
+      redirect_to edit_admin_user_path(@user), :error => 'Errors saving user'
+    end
   end
   
   def destroy
