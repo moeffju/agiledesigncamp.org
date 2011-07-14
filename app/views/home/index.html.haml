@@ -66,7 +66,7 @@
   %ul
     - @sponsors.each do |sponsor|
       %li
-        - if sponsor.image.present?
+        - unless sponsor.image_url.empty?
           = link_to image_tag(sponsor.image_url), sponsor.url, :alt => sponsor.name, :title => sponsor.name
         - else
           %big= link_to sponsor.name, sponsor.url, :title => sponsor.name
