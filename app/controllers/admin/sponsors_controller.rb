@@ -43,7 +43,7 @@ class Admin::SponsorsController < ApplicationController
   # POST /sponsors.xml
   def create
     @sponsor = Sponsor.new(params[:sponsor])
-
+    logger.debug @sponsor.inspect
     respond_to do |format|
       if @sponsor.save
         format.html { redirect_to(admin_sponsors_url, :notice => 'Sponsor was successfully created.') }
