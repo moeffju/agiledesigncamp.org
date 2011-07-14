@@ -20,14 +20,13 @@
     <%= f.text_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :image %><br />
-    <% if @sponsor.image? %><%= image_tag(@sponsor.image_url) %> <%= f.check_box :remove_image %> Löschen?<br><% end %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.label :image_url %><br />
+    <% if @sponsor.image_url %><%= image_tag(@sponsor.image_url) %><br><% end %>
+    <%= f.text_field :image_url, :size => 100 %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= f.text_field :url, :size => 100 %>
   </div>
   <div class="actions">
     <%= f.submit %>
