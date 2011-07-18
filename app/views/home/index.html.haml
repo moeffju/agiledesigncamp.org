@@ -53,12 +53,17 @@
       %li= link_to "show all #{@users[:yes].size} participants", users_path
 
 #newsfeed
-  &nbsp;
-  - if false
-    %h2
-      newsfeed
+  %h2
+    keynote
+    - if false
       %small= link_to 'show all', news_index_path
-  
+  %p
+    We are happy to announce Jeremy Tai Abbett (#{link_to '@jeremytai', 'https://twitter.com/jeremytai'}) as keynote speaker.
+  %p
+    Jeremy Tai Abbett is a teacher, hacker, strategist, interaction designer, and co-founder of Fork Unstable Media and Truth Dare Double Dare. Truth Dare Double Dare is a multi-disciplinary design firm with the goal of developing meaningful interactions through the intersection of art and technology.
+  %p In his previous life, Jeremy was an Award winning creative director, with three projects that were acquired by the Museum of Modern Art – San Francisco, a bunch of stree and a game that enraged the British Monarchy to his credit. He resides in Hamburg, Germany with his wife and two boys.
+  %p His keynote topic is: "Agile is to ______ as design is to programming. Or, a look at how Fork became a four-letter word on Germany's autobahn."
+
 #sponsors
   %h2
     sponsors
