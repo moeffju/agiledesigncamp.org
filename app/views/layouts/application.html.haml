@@ -55,12 +55,22 @@
           = link_to "sign in", new_user_session_path, :class => 'lightbox'
     #wrapper
       #container
-        #header
+        %header#header
           %h1
             = link_to 'agile design camp', root_path
+        %nav#nav
+          %ul
+            %li#l-homepage= link_to 'homepage', '/'
+            %li#l-registration
+              - if current_user
+                = link_to 'edit profile', edit_user_registration_path
+              - else
+                = link_to 'sign up', new_user_registration_path
+            %li#l-timetable= link_to 'timetable', '/timetable'
+            %li#l-sponsors= link_to 'sponsors', '/sponsors'
         #content
           = yield
-    #footer
+    %footer#footer
       .w
         = link_to 'sponsoring', sponsoring_path
         = link_to 'credits', humanstxt_path

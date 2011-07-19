@@ -12,6 +12,11 @@ class HomeController < ApplicationController
   def sponsoring; end
   def credits; end
   def about; end
+  def timetable; end
+
+  def sponsors
+    @sponsors = Sponsor.all
+  end
   
   def humanstxt
     @humans = <<-_EOF_.split(/\n/).map(&:strip)

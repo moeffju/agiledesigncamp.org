@@ -152,6 +152,49 @@ address {
     }
   }
 }
+#nav {
+  ul {
+    @include horizontal-list;
+    border-bottom: 1px solid $border-blue;
+    padding-left: 6px;
+    position: relative;
+    top: -2px;
+    li, li:first-child, li:last-child {
+      position: relative;
+      top: 1px;
+      border: 1px solid $border-blue;
+      padding: 0 6px;
+      margin-right: 6px;
+      a {
+        text-decoration: none;
+        display: block;
+        font-weight: bold;
+      }
+      &:hover {
+        padding: 0 7px;
+        background: $blue;
+        padding-bottom: 2px;
+        border: none;
+        a {
+          color: $darkblue;
+        }
+      }
+    }
+  }
+}
+.home-index #l-homepage,
+.registrations-new #l-registration, .registrations-edit #l-registration,
+.home-timetable #l-timetable,
+.home-sponsors #l-sponsors {
+  top: 0px;
+  padding: 0 7px;
+  background: $blue;
+  padding-bottom: 2px;
+  border: none;
+  a {
+    color: $darkblue;
+  }
+}
 #content {
 }
 #whatis {
@@ -358,5 +401,52 @@ ul.auth_providers {
   
   input.boolean, select.select {
     margin-top: 9px;
+  }
+}
+
+.nbr { white-space: nowrap; }
+
+.home-timetable {
+  @include clearfix;
+  .col {
+    float: left;
+    width: 420px;
+    margin-right: 60px;
+    &.last {
+      margin-right: 0;
+    }
+  }
+}
+.timetable {
+  border-collapse: collapse;
+  tr {
+    &:nth-child(even) {
+      background: rgba($blue, 0.1);
+    }
+    &:nth-child(odd) {
+      
+    }
+  }
+  th {
+    text-align: center;
+    white-space: nowrap;
+    border-right: 1px solid $border-blue;
+  }
+  td {
+    width: 100%;
+  }
+  th, td {
+  }
+}
+
+.home-sponsors {
+  .item p {
+    width: 600px;
+    margin-right: 40px;
+  }
+  .item p.i {
+    width: auto;
+    margin-right: 20px;
+    float: right;
   }
 }

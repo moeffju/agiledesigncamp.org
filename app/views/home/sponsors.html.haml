@@ -1,0 +1,14 @@
+%h2 Sponsors
+
+.items
+  .item
+    %h3 XING – Das professionelle Netzwerk
+    %p.i= link_to image_tag('http://moeffju.net/temp/adc11/xing.png', :alt => 'XING'), 'http://xing.com/'
+    %p XING ist das soziale Netzwerk für berufliche Kontakte. Über 10,8 Millionen Mitglieder nutzen die Internet-Plattform weltweit für Geschäft, Job und Karriere, davon rund 4,7 Millionen im deutschsprachigen Raum. Auf XING vernetzen sich Berufstätige aller Branchen, suchen und finden Jobs, Mitarbeiter, Aufträge, Kooperationspartner, fachlichen Rat oder Geschäftsideen. Mitglieder tauschen sich online in über 45.000 Fachgruppen aus und treffen sich persönlich auf XING Events. Betreiber der Plattform ist die XING AG. Das Unternehmen wurde 2003 in Hamburg gegründet und ist seit 2006 börsennotiert. Im Dezember 2010 hat XING die in München ansässige amiando AG übernommen, Europas führenden Anbieter von Online-Eventmanagement und <span class="nbr">-Ticketing</span>. Weitere Informationen können unter #{link_to "www.xing.com", 'http://www.xing.com'} abgerufen werden.
+  - @sponsors.reject{|x| x.name == 'XING'}.each do |sponsor|
+    .item
+      %h3= sponsor.name
+      - if sponsor.image_url
+        %p= link_to image_tag(sponsor.image_url, :alt => sponsor.name), sponsor.url
+      - else
+        %p= link_to sponsor.url, sponsor.url

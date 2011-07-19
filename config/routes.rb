@@ -4,8 +4,11 @@ Plusplus::Application.routes.draw do
   get "/impressum" => 'home#impressum'
   get "/sponsoring" => 'home#sponsoring'
   get "/credits" => 'home#credits'
-  get "/admin" => 'home#admin'
   get "/about" => 'home#about'
+  get "/sponsors" => 'home#sponsors'
+  get "/timetable" => 'home#timetable'
+  
+  get "/admin" => 'home#admin'
   
   devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, :only => [:index]
