@@ -61,13 +61,13 @@
         %nav#nav
           %ul
             %li#l-homepage= link_to 'homepage', '/'
+            %li#l-timetable= link_to 'timetable', '/timetable'
+            %li#l-sponsors= link_to 'sponsors', '/sponsors'
             %li#l-registration
               - if current_user
                 = link_to 'edit profile', edit_user_registration_path
               - else
                 = link_to 'sign up', new_user_registration_path
-            %li#l-timetable= link_to 'timetable', '/timetable'
-            %li#l-sponsors= link_to 'sponsors', '/sponsors'
         #content
           = yield
     %footer#footer
