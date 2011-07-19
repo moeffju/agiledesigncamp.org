@@ -407,11 +407,16 @@ ul.auth_providers {
 .nbr { white-space: nowrap; }
 
 .home-timetable {
-  @include clearfix;
+  h3 {
+    clear: both;
+  }
   .col {
+    h3 {
+      margin-top: 0;
+    }
     float: left;
-    width: 420px;
-    margin-right: 60px;
+    width: 460px;
+    margin-right: 20px;
     &.last {
       margin-right: 0;
     }
