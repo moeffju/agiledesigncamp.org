@@ -449,4 +449,15 @@ ul.auth_providers {
     margin-right: 20px;
     float: right;
   }
+  .item.sponsor-main {
+    background: rgba($blue, 0.1);
+    border: 1px solid $border-blue;
+    padding: 0 9px;
+    position: relative;
+    &:before {
+      position: absolute;
+      right: 4px;
+      content: 'main sponsor';
+    }
+  }
 }
