@@ -2,13 +2,23 @@
 
 %h2 participants
 
-.yes
-  %h3
-    attending
-    = "(#{@users[:yes].size})"
-  %ul.userlist
-    - @users[:yes].each do |user|
-      %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
+- if @users[:yes].size > 0
+  .yes
+    %h3
+      attending
+      = "(#{@users[:yes].size})"
+    %ul.userlist
+      - @users[:yes].each do |user|
+        %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
+
+- if @users[:waiting_list].size > 0
+  .waitinglist
+    %h3
+      waiting list
+      = "(#{@users[:waiting_list].size})"
+    %ul.userlist
+      - @users[:waiting_list].each do |user|
+        %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
 
 - if @users[:maybe].size > 0
   .maybe

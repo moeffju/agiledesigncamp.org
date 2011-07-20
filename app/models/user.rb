@@ -6,11 +6,18 @@ class User < ActiveRecord::Base
   attr_accessible :comment, :position, :company, :company_url, :full_name, :homepage, :first_barcamp, :tshirt_size, :status, :email, :password, :password_confirmation, :remember_me
   default_scope order('created_at DESC')
   scope :maybe, where(:status => 2)
-  scope :yes, where(:status => 1)
   scope :no, where(:status => 0)
   validates_presence_of :tshirt_size, :on => :update
   validates_inclusion_of :tshirt_size, :in => %w(WXS WS WM WL WXL XS S M L XL XXL 3XL 4XL 5XL 6XL), :message => "%{value} is not a valid t-shirt size", :on => :update
   validates_inclusion_of :status, :in => [0,1,2], :message => "%{value} is not a valid participation status", :on => :update
+  
+  def self.yes
+    self.where(:status => 1)[-100..-1]
+  end
+  
+  def self.waiting_list
+    self.where(:status => 1)[0...-100]
+  end
   
   def self.new_with_session(params, session)
     super.tap do |user|

@@ -45,12 +45,12 @@
 #participants
   %h2
     participants
-    %small= link_to 'show all', users_path
+    %small= link_to "show all #{@users[:yes].size} (+ #{@users[:waiting_list].size})", users_path, :title => "#{@users[:yes].size} attending, #{@users[:waiting_list].size} on waiting list"
   %ul.userlist
     - @users[:yes][0,user_limit].each do |user|
       %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
     - if @users[:yes].size > user_limit
-      %li= link_to "show all #{@users[:yes].size} participants", users_path
+      %li= link_to "show all", users_path
 
 #newsfeed
   %h2

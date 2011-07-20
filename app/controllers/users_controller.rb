@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @users = {
       :all => User.all,
       :yes => User.yes,
+      :waiting_list => User.waiting_list,
       :maybe => User.maybe,
       :no => User.no
     }

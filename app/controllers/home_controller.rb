@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @users = {
       :yes => User.yes,
+      :waiting_list => User.waiting_list,
       :maybe => User.maybe
     }
     @sponsors = Sponsor.all

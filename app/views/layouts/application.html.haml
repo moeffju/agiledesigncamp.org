@@ -63,6 +63,7 @@
             %li#l-homepage= link_to 'homepage', '/'
             %li#l-timetable= link_to 'timetable', '/timetable'
             %li#l-sponsors= link_to 'sponsors', '/sponsors'
+            %li#l-users= link_to 'participants', '/users'
             %li#l-registration
               - if current_user
                 = link_to 'edit profile', edit_user_registration_path
