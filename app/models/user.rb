@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   validates_inclusion_of :status, :in => [0,1,2], :message => "%{value} is not a valid participation status", :on => :update
   
   def self.yes
-    self.where(:status => 1)[-100..-1]
+    x = self.where(:status => 1)
+    x.size > 100 ? x[-100..-1] : x
   end
   
   def self.waiting_list

@@ -36,7 +36,7 @@
     23./24. juli 2011
     %br
     = link_to 'betahaus hamburg', 'http://hamburg.betahaus.de/'
-  - if current_user and current_user.status == 1
+  - if current_user
     = link_to 'edit your profile', edit_user_registration_path
   - else
     = link_to 'register now', new_user_registration_path
@@ -45,7 +45,7 @@
 #participants
   %h2
     participants
-    %small= link_to "show all #{@users[:yes].size} (+ #{@users[:waiting_list].size})", users_path, :title => "#{@users[:yes].size} attending, #{@users[:waiting_list].size} on waiting list"
+    %small= link_to "show all #{@users[:yes].size}"+(@users[:waiting_list].present? ? " (+ #{@users[:waiting_list].size})" : ''), users_path, :title => "#{@users[:yes].size} attending, #{@users[:waiting_list].size} on waiting list"
   %ul.userlist
     - @users[:yes][0,user_limit].each do |user|
       %li.usertile= render :partial => 'shared/user', :locals => { :user => user }
