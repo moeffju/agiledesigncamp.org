@@ -505,8 +505,10 @@ ul.auth_providers {
   }
   .sponsors-gold {
     clear: both;
+    @include clearfix;
   }
   .sponsors-silver {
     clear: both;
+    @include clearfix;
   }
 }
